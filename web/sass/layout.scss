@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  background: white;
+  background: #34AB01;
   font-family: 'PT Serif', serif;
   font-size: 18px;
 }
@@ -11,8 +11,14 @@ body {
 }
 
 h1, h2, h3 {
-  font-weight: bold;
+  font-weight: 700;
   font-family: 'Montserrat', sans-serif;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #4280B8;
 }
 
 p {
@@ -20,12 +26,56 @@ p {
 }
 
 h1 {
-  font-size: 50px;
+  font-size: 70px;
   margin: 0 0 20px 0;
+  color: #fff;
+  text-transform: uppercase;
 }
 
-nav {
+.page-header {
+  margin: 0 0 40px 0;
+}
+
+.page-title {
+  margin: 0;
+}
+
+.page-navigation {
   font-weight: bold;
   font-family: 'Montserrat', sans-serif;
   margin: 0 0 5px 0;
+
+  a {
+    font-weight: 500;
+    color: #fff;
+    opacity: .65;
+
+    &:hover {
+      opacity: .8;
+    }
+  }
+}
+
+.hero-image-container {
+  margin: -40px -40px -105px -40px;
+}
+
+.hero-image {
+  width: 100%;
+}
+
+.main-navigation {
+  a {
+    display: block;
+    margin: 0 0 10px 0;
+    font-size: 40px;
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+    opacity: .65;
+
+    &:hover {
+      opacity: .8;
+    }
+  }
 }

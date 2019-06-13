@@ -10,10 +10,16 @@ app
   .then(() => {
     const server = express()
 
-    server.get('/husets-historia/:slug', (req, res) => {
-      const actualPage = '/history-article'
-      const queryParams = { slug: req.params.slug }
-      app.render(req, res, actualPage, queryParams)
+    server.get('/om-huset/:slug', (req, res) => {
+      const slug = req.params.slug
+
+      if (slug === 'tidslinje') {
+        app.render(req, res, '/timeline')
+      } else {
+        const actualPage = '/history-article'
+        const queryParams = { slug }
+        app.render(req, res, actualPage, queryParams)
+      }
     })
 
     server.get('*', (req, res) => {

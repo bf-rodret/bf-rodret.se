@@ -1,0 +1,23 @@
+
+.rich-text {
+  img {
+    width: 100%;
+    display: block;
+  }
+
+  figure {
+    margin: 0 0 20px 0;
+  }
+
+  p:last-child, 
+  ul:last-child {
+    margin: 0;
+  }
+
+  ul {
+    margin: 0 0 20px 0;
+    padding: 0 0 0 20px;
+  }
+  
+}
+
