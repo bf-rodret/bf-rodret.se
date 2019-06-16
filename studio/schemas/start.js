@@ -8,6 +8,11 @@ export default {
       title: "Titel",
       name: "title",
       type: "string",
+    },
+    {
+      title: 'Hero-bild',
+      type: 'image',
+      name: 'hero'
     }
   ]
 }
