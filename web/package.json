@@ -10,7 +10,7 @@
     "export": "npm run build && next export"
   },
   "keywords": [],
-  "author": "",
+  "author": "Martin Lissmyr",
   "license": "ISC",
   "dependencies": {
     "@sanity/block-content-to-react": "^2.0.6",
