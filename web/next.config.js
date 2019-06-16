@@ -11,7 +11,7 @@ module.exports = withSass({
       .then(function(data) {
         // use reduce to build an object with routes
         // and select the history-article.js file
-        const paths = data.reduce(
+        const routes = data.reduce(
           (acc, slug) => ({
             '/': { page: '/' },
             '/om-huset': { page: '/om-huset' },
@@ -21,8 +21,7 @@ module.exports = withSass({
           }),
           {}
         )
-        console.log(paths)
-        return paths
+        return routes
       })
       .catch(console.error)
     return path
