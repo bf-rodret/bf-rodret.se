@@ -33,20 +33,16 @@ export default class Pages extends React.Component {
           <h1 className="page-title">Om huset</h1>
         </div>
 
-        <article className="article">
-          <div class="rich-text">
-            <ul>
-              {data.map(page => (
-                <li key={page._id}>
-                  <Link href={{pathname: '/om-huset/' + page.slug.current}}>
-                    <a>{page.title}</a>
-                  </Link>
-                </li>
-              ))}
-              <li><a href="/om-huset/tidslinje">Tidslinje</a></li>
-            </ul>
-          </div>
-        </article>
+        <ul className="main-navigation">
+          {data.map(page => (
+            <li key={page._id}>
+              <Link href={{pathname: '/om-huset/' + page.slug.current}}>
+                <a>{page.title}</a>
+              </Link>
+            </li>
+          ))}
+          <li><a href="/om-huset/tidslinje">Tidslinje</a></li>
+        </ul>
       </Layout>
     )
   }

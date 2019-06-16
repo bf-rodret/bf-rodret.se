@@ -35,13 +35,13 @@ export default class ContentPage extends React.Component {
                 .width(1600)
                 .url()}
             />
+            <h1 className="hero-title">{data.title}</h1>
           </div>
-          <h1 className="page-title">{data.title}</h1>
         </div>
-        <div className="main-navigation">
-          <a href="#">Föreningen</a>
-          <a href="/om-huset">Om huset</a>
-        </div>
+        <ul className="main-navigation">
+          <li><a href="#">Föreningen</a></li>
+          <li><a href="/om-huset">Om huset</a></li>
+        </ul>
       </Layout>
     )
   }
