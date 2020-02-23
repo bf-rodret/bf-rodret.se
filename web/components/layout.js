@@ -12,7 +12,7 @@ export default props => (
     <div className="main">
       {props.children}
       <div className="footer">
-        BF Rodret UPA. <a href="https://goo.gl/maps/73XdpHWQQvRzo1yc7">Eldarvägen 4-6, Gröndal, 117 66 Stockholm.</a>
+        BF Rodret 2 U.P.A. <a href="https://goo.gl/maps/73XdpHWQQvRzo1yc7">Eldarvägen 4-6, Gröndal, 117 66 Stockholm.</a>
       </div>
     </div>
   </div>
