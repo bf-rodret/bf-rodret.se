@@ -1,6 +1,18 @@
 .article {
   max-width: 900px;
-  padding: 30px;
+  padding: 30px 30px 90px 30px;
   background: #fff;
   border-radius: 3px;
+
+  .rich-text {
+
+    line-height: 1.4;
+
+    p {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 600px;
+    }
+  }
 }
+
