@@ -8,17 +8,9 @@ export default function(title, name) {
         type: 'block'
       },
       {
-        type: 'image',
-        fields: [
-          {
-            type: 'text',
-            name: 'caption',
-            title: 'Caption',
-            options: {
-              isHighlighted: true
-            }
-          }
-        ]
+        type: 'reference',
+        title: 'Image',
+        to: [{type: 'historyImage'}]
       }
     ]
   }
