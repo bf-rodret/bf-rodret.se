@@ -55,6 +55,10 @@ h1 {
     &:hover {
       opacity: .8;
     }
+
+    &.page-navigation-main {
+      font-weight: bold;
+    }
   }
 }
 

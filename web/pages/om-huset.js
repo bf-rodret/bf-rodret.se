@@ -27,7 +27,7 @@ export default class Pages extends React.Component {
         <div className="page-header">
           <nav className="page-navigation">
             <Link href="/">
-              <a>← Hem</a>
+              <a>← BF Rodret Gröndal</a>
             </Link>
           </nav>
           <h1 className="page-title">Om huset</h1>

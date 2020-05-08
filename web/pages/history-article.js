@@ -60,8 +60,12 @@ export default class ContentPage extends React.Component {
       <Layout pageType="article-page">
         <div className="page-header">
           <nav className="page-navigation">
+            <Link href="/">
+              <a className="page-navigation-main">←  BF Rodret Gröndal</a>
+            </Link>
+            &nbsp;/&nbsp;
             <Link href="/om-huset">
-              <a>← Om huset</a>
+              <a>Om huset</a>
             </Link>
           </nav>
           <h1 className="page-title">{data.title}</h1>
