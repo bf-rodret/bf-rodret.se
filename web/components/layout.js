@@ -2,7 +2,7 @@ import Head from 'next/head'
 import "../sass/layout.scss"
 
 export default props => (
-  <div>
+  <div className={props.pageType}>
     <Head>
       <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />

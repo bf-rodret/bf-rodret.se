@@ -1,13 +1,35 @@
-.article {
-  max-width: 900px;
-  padding: 30px 30px 90px 30px;
+.article-page {
   background: #fff;
-  border-radius: 3px;
+
+  .page-header,
+  .page-title {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #5CA685;
+    text-align: center;
+
+    a {
+      color: #5CA685;
+    }
+  }
+
+  .page-header {
+    margin-bottom: 10px;
+  }
+}
+.article {
+  line-height: 1.5;
+
+  .lead {
+    font-family: 'Montserrat', sans-serif;
+    max-width: 900px;
+    font-size: 27px;
+    margin: 0 auto 40px auto;
+    text-align: center;
+  }
 
   .rich-text {
-
-    line-height: 1.4;
-
     p {
       margin-left: auto;
       margin-right: auto;
@@ -16,18 +38,20 @@
   }
 
   .history-image {
-    max-width: 700px;
     margin: 60px auto;
+    max-width: 700px;
 
     img {
       display: block;
     }
 
     figcaption {
-      margin: 10px 0 0 0;
+      max-width: 600px;
+      margin: 10px auto 0 auto;
       font-family: 'Montserrat', sans-serif;
       font-size: 16px;
       color: #5CA685;
+      text-align: center;
     }
   }
 }

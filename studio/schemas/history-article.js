@@ -18,6 +18,11 @@ export default {
         source: 'title'
       }
     },
+    {
+      title: "Lead",
+      name: "lead",
+      type: "text",
+    },
     richTextEditor('Text', 'body')
   ]
 }

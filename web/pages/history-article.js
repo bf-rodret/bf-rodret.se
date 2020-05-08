@@ -9,6 +9,7 @@ import "../sass/article.scss"
 
 const query = groq`*[_type == "historyArticle" && slug.current == $slug][0]{
   title,
+  lead,
   body[]{
     ...,
     "historyImage": *[_type=='historyImage' && _id == ^._ref]{ 
@@ -39,18 +40,15 @@ export default class ContentPage extends React.Component {
   render() {
     const {data} = this.props
 
-    console.log(data);
-
     const serializers = {
       types: {
         reference: props => {
-          console.log(props);
           const imageArticle = props.node.historyImage[0]
           return (
             <figure className="history-image">
               <img src={urlFor(imageArticle.image).url()}/>
               <figcaption>
-                {imageArticle.caption} ({imageArticle.year})
+                {imageArticle.caption}
               </figcaption>
             </figure>
           )
@@ -59,16 +57,17 @@ export default class ContentPage extends React.Component {
     }
 
     return (
-      <Layout>
+      <Layout pageType="article-page">
         <div className="page-header">
           <nav className="page-navigation">
             <Link href="/om-huset">
-              <a>← Husets historia</a>
+              <a>← Om huset</a>
             </Link>
           </nav>
           <h1 className="page-title">{data.title}</h1>
         </div>
         <article className="article">
+          <div className="lead">{data.lead}</div>
           <BlockContent className="rich-text" blocks={data.body} serializers={serializers} {...client.config()}/>
         </article>
       </Layout>
