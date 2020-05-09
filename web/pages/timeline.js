@@ -27,8 +27,12 @@ export default class TimeLine extends React.Component {
       <Layout>
         <div className="page-header">
           <nav className="page-navigation">
+            <Link href="/">
+              <a className="page-navigation-main">←  BF Rodret Gröndal</a>
+            </Link>
+            &nbsp;/&nbsp;
             <Link href="/om-huset">
-              <a>← Husets historia</a>
+              <a>Om huset</a>
             </Link>
           </nav>
           <h1 className="page-title">Tidslinje</h1>

@@ -41,6 +41,7 @@ export default class Pages extends React.Component {
               </Link>
             </li>
           ))}
+          <li><a href="/om-huset/bilder">Bilder</a></li>
           <li><a href="/om-huset/tidslinje">Tidslinje</a></li>
         </ul>
       </Layout>

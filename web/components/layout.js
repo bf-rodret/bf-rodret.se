@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import "../node_modules/bootstrap/scss/bootstrap.scss"
 import "../sass/layout.scss"
 
 export default props => (

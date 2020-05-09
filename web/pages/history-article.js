@@ -46,10 +46,14 @@ export default class ContentPage extends React.Component {
           const imageArticle = props.node.historyImage[0]
           return (
             <figure className="history-image">
-              <img src={urlFor(imageArticle.image).url()}/>
-              <figcaption>
-                {imageArticle.caption}
-              </figcaption>
+              <Link href={'/om-huset/bilder/' + imageArticle._id}>
+                <a>
+                  <img src={urlFor(imageArticle.image).url()}/>
+                  <figcaption>
+                    {imageArticle.caption}
+                  </figcaption>
+                </a>
+              </Link>
             </figure>
           )
         }

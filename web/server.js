@@ -10,16 +10,22 @@ app
   .then(() => {
     const server = express()
 
+    server.get('/om-huset/tidslinje', (req, res) => {
+      app.render(req, res, '/timeline')
+    })
+
+    server.get('/om-huset/bilder', (req, res) => {
+      app.render(req, res, '/images')
+    })
+
+    server.get('/om-huset/bilder/:id', (req, res) => {
+      const id = req.params.id
+      app.render(req, res, '/image', { id })
+    })
+
     server.get('/om-huset/:slug', (req, res) => {
       const slug = req.params.slug
-
-      if (slug === 'tidslinje') {
-        app.render(req, res, '/timeline')
-      } else {
-        const actualPage = '/history-article'
-        const queryParams = { slug }
-        app.render(req, res, actualPage, queryParams)
-      }
+      app.render(req, res, '/history-article', { slug })
     })
 
     server.get('*', (req, res) => {
