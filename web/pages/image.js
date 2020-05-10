@@ -2,29 +2,28 @@ import React from 'react'
 import groq from 'groq'
 import client from '../client'
 import imageUrlBuilder from '@sanity/image-url'
-import Link from 'next/link'
 import Layout from '../components/layout'
+import Image from '../components/image'
+import ImageList from '../components/image-list'
 import PageHeader from '../components/page-header'
 import "../sass/history-images.scss"
 
-// Get a pre-configured url-builder from your sanity client
 const builder = imageUrlBuilder(client)
-
-// Then we like to make a simple function like this that gives the
-// builder an image and returns the builder for you to specify additional
-// parameters:
 function urlFor(source) {
   return builder.image(source)
 }
 
-export default class Image extends React.Component {
+export default class ImagePage extends React.Component {
   static async getInitialProps(context) {
-    const query = groq`*[_type == "historyImage" && _id == $id] {
-      ...
-    }`
     const {id} = context.query
+    const selectedImageData = await client.fetch(groq`*[_type == "historyImage" && _id == $id] { ... }[0]`, { id })
+    const allImagesData = await client.fetch(groq`*[_type == "historyImage"] { ... }[0...200] | order(year)`)
+
     return {
-      data: await client.fetch(query, { id })
+      data: {
+        selectedImageData, 
+        allImagesData
+      }
     }
   }
 
@@ -43,13 +42,11 @@ export default class Image extends React.Component {
 
     return (
       <Layout>
-        <PageHeader pageTitle="Tidslinje" breadcrumbs={breadcrumbs}></PageHeader>
-        <article className="image">
-          <figure className="history-image">
-            <img src={urlFor(data[0].image).url()}/>
-            <figcaption>{data[0].caption}</figcaption>
-          </figure>
-        </article>
+        <PageHeader pageTitle="Bilder" breadcrumbs={breadcrumbs}></PageHeader>
+        <div className="history-image-container">
+          <Image data={data.selectedImageData}/>
+        </div>
+        <ImageList images={data.allImagesData}/>
       </Layout>
     )
   }

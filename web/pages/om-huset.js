@@ -13,7 +13,7 @@ const query = groq`*[_type == "historyArticle"] {
   slug
 }[0...50]`
 
-export default class Pages extends React.Component {
+export default class AboutTheHousePage extends React.Component {
   static async getInitialProps() {
     return {
       data: await client.fetch(query)

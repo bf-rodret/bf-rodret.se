@@ -4,6 +4,7 @@ import imageUrlBuilder from '@sanity/image-url'
 import BlockContent from '@sanity/block-content-to-react'
 import Layout from '../components/layout'
 import PageHeader from '../components/page-header'
+import Image from '../components/image'
 import Link from 'next/link'
 import "../sass/rich-text.scss"
 import "../sass/article.scss"
@@ -13,7 +14,7 @@ const query = groq`*[_type == "historyArticle" && slug.current == $slug][0]{
   lead,
   body[]{
     ...,
-    "historyImage": *[_type=='historyImage' && _id == ^._ref]{ 
+    "historyImage": *[_type=='historyImage' && _id == ^._ref][0]{ 
       ...
     }
   }
@@ -29,7 +30,7 @@ function urlFor(source) {
   return builder.image(source)
 }
 
-export default class ContentPage extends React.Component {
+export default class HistoryArticlePage extends React.Component {
 
   static async getInitialProps(context) {
     const {slug} = context.query
@@ -44,18 +45,9 @@ export default class ContentPage extends React.Component {
     const serializers = {
       types: {
         reference: props => {
-          const imageArticle = props.node.historyImage[0]
+          const image = props.node.historyImage
           return (
-            <figure className="history-image">
-              <Link href={'/om-huset/bilder/' + imageArticle._id}>
-                <a>
-                  <img src={urlFor(imageArticle.image).url()}/>
-                  <figcaption>
-                    {imageArticle.caption}
-                  </figcaption>
-                </a>
-              </Link>
-            </figure>
+            <Image data={image} link={true}/>
           )
         }
       }

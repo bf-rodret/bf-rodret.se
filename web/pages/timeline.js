@@ -14,7 +14,7 @@ const query = groq`*[_type == "timelineEvent"] {
   story
 }[0...100] | order(year)`
 
-export default class TimeLine extends React.Component {
+export default class TimeLinePage extends React.Component {
   static async getInitialProps() {
     return {
       data: await client.fetch(query)

@@ -15,7 +15,7 @@ const query = groq`*[_id == "start"][0]{
   hero
 }`
 
-export default class ContentPage extends React.Component {
+export default class IndexPage extends React.Component {
 
   static async getInitialProps(context) {
     return {
