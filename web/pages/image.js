@@ -4,7 +4,7 @@ import client from '../client'
 import imageUrlBuilder from '@sanity/image-url'
 import Link from 'next/link'
 import Layout from '../components/layout'
-import Images from './images'
+import PageHeader from '../components/page-header'
 import "../sass/history-images.scss"
 
 // Get a pre-configured url-builder from your sanity client
@@ -30,25 +30,20 @@ export default class Image extends React.Component {
 
   render() {
     const {data} = this.props
-    console.log(this.props)
+    const breadcrumbs = [
+      {
+        'title': 'Om Huset',
+        'url': '/om-huset'
+      },
+      {
+        'title': 'Bilder',
+        'url': '/om-huset/bilder'
+      }
+    ]
 
     return (
       <Layout>
-        <div className="page-header">
-          <nav className="page-navigation">
-            <Link href="/">
-              <a className="page-navigation-main">←  BF Rodret Gröndal</a>
-            </Link>
-            &nbsp;/&nbsp;
-            <Link href="/om-huset">
-              <a>Om huset</a>
-            </Link>
-            &nbsp;/&nbsp;
-            <Link href="/om-huset/bilder">
-              <a>Bilder</a>
-            </Link>
-          </nav>
-        </div>
+        <PageHeader pageTitle="Tidslinje" breadcrumbs={breadcrumbs}></PageHeader>
         <article className="image">
           <figure className="history-image">
             <img src={urlFor(data[0].image).url()}/>

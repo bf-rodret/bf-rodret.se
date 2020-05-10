@@ -4,6 +4,7 @@ import client from '../client'
 import BlockContent from '@sanity/block-content-to-react'
 import Link from 'next/link'
 import Layout from '../components/layout'
+import PageHeader from '../components/page-header'
 import "../sass/timeline.scss"
 import "../sass/rich-text.scss"
 
@@ -22,21 +23,16 @@ export default class TimeLine extends React.Component {
 
   render() {
     const {data} = this.props
+    const breadcrumbs = [
+      {
+        'title': 'Om Huset',
+        'url': '/om-huset'
+      }
+    ]
 
     return (
       <Layout>
-        <div className="page-header">
-          <nav className="page-navigation">
-            <Link href="/">
-              <a className="page-navigation-main">←  BF Rodret Gröndal</a>
-            </Link>
-            &nbsp;/&nbsp;
-            <Link href="/om-huset">
-              <a>Om huset</a>
-            </Link>
-          </nav>
-          <h1 className="page-title">Tidslinje</h1>
-        </div>
+        <PageHeader pageTitle="Tidslinje" breadcrumbs={breadcrumbs}></PageHeader>
         <article className="timeline-article">
           <ul className="timeline">
             {data.map(event => (

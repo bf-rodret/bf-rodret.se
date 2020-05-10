@@ -3,6 +3,7 @@ import groq from 'groq'
 import client from '../client'
 import Link from 'next/link'
 import Layout from '../components/layout'
+import PageHeader from '../components/page-header'
 import "../sass/rich-text.scss"
 import "../sass/article.scss"
 
@@ -24,14 +25,7 @@ export default class Pages extends React.Component {
 
     return (
       <Layout>
-        <div className="page-header">
-          <nav className="page-navigation">
-            <Link href="/">
-              <a>← BF Rodret Gröndal</a>
-            </Link>
-          </nav>
-          <h1 className="page-title">Om huset</h1>
-        </div>
+        <PageHeader pageTitle="Om huset"></PageHeader>
 
         <ul className="main-navigation">
           {data.map(page => (

@@ -3,6 +3,7 @@ import client from '../client'
 import imageUrlBuilder from '@sanity/image-url'
 import BlockContent from '@sanity/block-content-to-react'
 import Layout from '../components/layout'
+import PageHeader from '../components/page-header'
 import Link from 'next/link'
 import "../sass/rich-text.scss"
 import "../sass/article.scss"
@@ -60,20 +61,16 @@ export default class ContentPage extends React.Component {
       }
     }
 
+    const breadcrumbs = [
+      {
+        'title': 'Om Huset',
+        'url': '/om-huset'
+      }
+    ]
+
     return (
       <Layout pageType="article-page">
-        <div className="page-header">
-          <nav className="page-navigation">
-            <Link href="/">
-              <a className="page-navigation-main">←  BF Rodret Gröndal</a>
-            </Link>
-            &nbsp;/&nbsp;
-            <Link href="/om-huset">
-              <a>Om huset</a>
-            </Link>
-          </nav>
-          <h1 className="page-title">{data.title}</h1>
-        </div>
+        <PageHeader pageTitle={data.title} breadcrumbs={breadcrumbs}></PageHeader>
         <article className="article">
           <div className="lead">{data.lead}</div>
           <BlockContent className="rich-text" blocks={data.body} serializers={serializers} {...client.config()}/>
