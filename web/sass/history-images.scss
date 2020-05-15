@@ -3,6 +3,18 @@
   background: #fff;
   border-radius: 3px;
 
+  a {
+    color: #5CA685;
+  }
+
+  a:hover {
+    text-decoration: none;
+
+    img {
+      opacity: .8;
+    }
+  }
+
   img {
     width: 100%;
   }
@@ -13,6 +25,10 @@
     font-size: 16px;
     color: #5CA685;
     text-align: center;
+
+    a {
+      text-decoration: underline;
+    }
   }
 }
 

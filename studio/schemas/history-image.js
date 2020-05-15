@@ -17,6 +17,11 @@ export default {
       title: "Beskrivning",
       name: "caption",
       type: "text"
+    },
+    {
+      title: "Källa",
+      name: "source",
+      type: "url"
     }
   ],
   preview: {

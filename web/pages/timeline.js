@@ -4,6 +4,7 @@ import client from '../client'
 import BlockContent from '@sanity/block-content-to-react'
 import Link from 'next/link'
 import Layout from '../components/layout'
+import Image from '../components/image'
 import PageHeader from '../components/page-header'
 import "../sass/timeline.scss"
 import "../sass/rich-text.scss"
@@ -11,7 +12,12 @@ import "../sass/rich-text.scss"
 const query = groq`*[_type == "timelineEvent"] {
   _id,
   year,
-  story
+  story[]{
+    ...,
+    "historyImage": *[_type=='historyImage' && _id == ^._ref][0]{ 
+      ...
+    }
+  }
 }[0...100] | order(year)`
 
 export default class TimeLinePage extends React.Component {
@@ -30,6 +36,17 @@ export default class TimeLinePage extends React.Component {
       }
     ]
 
+    const serializers = {
+      types: {
+        reference: props => {
+          const image = props.node.historyImage
+          return (
+            <Image data={image} link={true} showcaption={false}/>
+          )
+        }
+      }
+    }
+
     return (
       <Layout>
         <PageHeader pageTitle="Tidslinje" breadcrumbs={breadcrumbs}></PageHeader>
@@ -39,7 +56,7 @@ export default class TimeLinePage extends React.Component {
               <li key={event._id} className="event">
                 <div className="event-content">
                   <h2>{event.year}</h2>
-                  <BlockContent className="rich-text" blocks={event.story} imageOptions={{ w: 640, h: 480, fit: 'max' }} {...client.config()}/>
+                  <BlockContent className="rich-text" blocks={event.story} serializers={serializers} imageOptions={{ w: 640, h: 480, fit: 'max' }} {...client.config()}/>
                 </div>
               </li>
             ))}
