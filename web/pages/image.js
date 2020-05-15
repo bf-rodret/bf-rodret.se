@@ -6,7 +6,7 @@ import Layout from '../components/layout'
 import Image from '../components/image'
 import ImageList from '../components/image-list'
 import PageHeader from '../components/page-header'
-import "../sass/history-images.scss"
+import '../sass/history-images-page.scss'
 
 const builder = imageUrlBuilder(client)
 function urlFor(source) {

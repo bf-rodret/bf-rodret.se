@@ -1,6 +1,7 @@
 import imageUrlBuilder from '@sanity/image-url'
 import client from '../client'
 import Link from 'next/link'
+import '../sass/history-image.scss'
 
 const builder = imageUrlBuilder(client)
 function urlFor(source) {

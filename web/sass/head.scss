@@ -25,9 +25,9 @@
       font-weight: bold;
     }
   }
+}
 
-  a + a:before {
-    content: ' / ';
-    font-weight: bold;
-  }
+.page-navigation-part + .page-navigation-part:before {
+  content: ' / ';
+  font-weight: bold;
 }
