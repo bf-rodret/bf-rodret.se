@@ -3,6 +3,7 @@ import client from '../client'
 import imageUrlBuilder from '@sanity/image-url'
 import Layout from '../components/layout'
 import Link from 'next/link'
+import MainNavigation from '../components/main-navigation'
 
 const builder = imageUrlBuilder(client)
  
@@ -17,14 +18,32 @@ const query = groq`*[_id == "start"][0]{
 
 export default class IndexPage extends React.Component {
 
-  static async getInitialProps(context) {
+  static async getInitialProps() {
     return {
-      data: await client.fetch(query)
+      data: await client.fetch(query),
+      childPages: [
+        {
+          _id: 'foreningen',
+          slug: {
+            _type: 'slug',
+            current: 'foreningen'
+          },
+          title: 'Föreningen'
+        },
+        {
+          _id: 'om-huset',
+          slug: {
+            _type: 'slug',
+            current: 'om-huset'
+          },
+          title: 'Om huset'
+        },
+      ]
     }
   }
 
   render() {
-    const {data} = this.props
+    const {data, childPages} = this.props
     return (
       <Layout>
         <div className="page-header">
@@ -38,10 +57,7 @@ export default class IndexPage extends React.Component {
             <h1 className="hero-title">{data.title}</h1>
           </div>
         </div>
-        <ul className="main-navigation">
-          <li><a href="#">Föreningen</a></li>
-          <li><a href="/om-huset">Om huset</a></li>
-        </ul>
+        <MainNavigation data={childPages}/>
       </Layout>
     )
   }

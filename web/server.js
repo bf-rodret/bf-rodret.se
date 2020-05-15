@@ -28,6 +28,15 @@ app
       app.render(req, res, '/history-article', { slug })
     })
 
+    server.get('/foreningen/:slug', (req, res) => {
+      const slug = req.params.slug
+      app.render(req, res, '/information-article', { slug })
+    })
+
+    server.get('/foreningen', (req, res) => {
+      app.render(req, res, '/foreningen')
+    })
+
     server.get('*', (req, res) => {
       return handle(req, res)
     })

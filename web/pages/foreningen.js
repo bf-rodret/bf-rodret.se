@@ -6,7 +6,7 @@ import Layout from '../components/layout'
 import PageHeader from '../components/page-header'
 import MainNavigation from '../components/main-navigation'
 
-const query = groq`*[_type == "historyArticle"] {
+const query = groq`*[_type == "informationArticle"] {
   _id,
   title,
   slug
@@ -15,24 +15,6 @@ const query = groq`*[_type == "historyArticle"] {
 export default class AboutTheHousePage extends React.Component {
   static async getInitialProps() {
     const data = await client.fetch(query);
-
-    data.push({
-      _id: 'bilder',
-      slug: {
-        _type: 'slug',
-        current: 'bilder'
-      },
-      title: 'Bilder'
-    })
-
-    data.push({
-      _id: 'tidslinje',
-      slug: {
-        _type: 'slug',
-        current: 'tidslinje'
-      },
-      title: 'Tidslinje'
-    })
 
     return {
       data: data
@@ -44,8 +26,8 @@ export default class AboutTheHousePage extends React.Component {
 
     return (
       <Layout>
-        <PageHeader pageTitle="Om huset"></PageHeader>
-        <MainNavigation data={data} path="/om-huset"/>
+        <PageHeader pageTitle="Föreningen"></PageHeader>
+        <MainNavigation data={data} path="/foreningen"/>
       </Layout>
     )
   }
