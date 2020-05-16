@@ -5,34 +5,11 @@ import Link from 'next/link'
 import Layout from '../components/layout'
 import PageHeader from '../components/page-header'
 import MainNavigation from '../components/main-navigation'
-
-const query = groq`*[_type == "historyArticle"] {
-  _id,
-  title,
-  slug
-}[0...50]`
+import getTocDataForPageType from '../helpers/get-toc-data-for-page-type.js'
 
 export default class AboutTheHousePage extends React.Component {
   static async getInitialProps() {
-    const data = await client.fetch(query);
-
-    data.push({
-      _id: 'bilder',
-      slug: {
-        _type: 'slug',
-        current: 'bilder'
-      },
-      title: 'Bilder'
-    })
-
-    data.push({
-      _id: 'tidslinje',
-      slug: {
-        _type: 'slug',
-        current: 'tidslinje'
-      },
-      title: 'Tidslinje'
-    })
+    const data = await getTocDataForPageType('historyArticle');
 
     return {
       data: data

@@ -4,6 +4,8 @@ import client from '../client'
 import Layout from '../components/layout'
 import ImageList from '../components/image-list'
 import PageHeader from '../components/page-header'
+import MainNavigation from '../components/main-navigation'
+import getTocDataForPageType from '../helpers/get-toc-data-for-page-type.js'
 import '../sass/history-images-page.scss'
 
 export default class ImagesPage extends React.Component {
@@ -11,13 +13,17 @@ export default class ImagesPage extends React.Component {
     const query = groq`*[_type == "historyImage"] {
       ...
     } | order(year)`
+    const images = await client.fetch(query)
+    const tocData = await getTocDataForPageType('historyArticle', 'bilder');
+
     return {
-      data: await client.fetch(query)
+      images,
+      tocData
     }
   }
 
   render() {
-    const {data} = this.props
+    const {images, tocData} = this.props
     const breadcrumbs = [
       {
         'title': 'Om Huset',
@@ -26,9 +32,10 @@ export default class ImagesPage extends React.Component {
     ]
 
     return (
-      <Layout>
+      <Layout pageType="images-page">
         <PageHeader pageTitle="Bilder" breadcrumbs={breadcrumbs}></PageHeader>
-        <ImageList images={data}/>
+        <ImageList images={images}/>
+        <MainNavigation data={tocData} path="/om-huset"/>
       </Layout>
     )
   }

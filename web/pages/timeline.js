@@ -2,33 +2,37 @@ import React from 'react'
 import groq from 'groq'
 import client from '../client'
 import BlockContent from '@sanity/block-content-to-react'
-import Link from 'next/link'
 import Layout from '../components/layout'
 import Image from '../components/image'
 import PageHeader from '../components/page-header'
+import MainNavigation from '../components/main-navigation'
+import getTocDataForPageType from '../helpers/get-toc-data-for-page-type.js'
 import "../sass/timeline.scss"
 import "../sass/rich-text.scss"
 
-const query = groq`*[_type == "timelineEvent"] {
-  _id,
-  year,
-  story[]{
-    ...,
-    "historyImage": *[_type=='historyImage' && _id == ^._ref][0]{ 
-      ...
-    }
-  }
-}[0...100] | order(year)`
-
 export default class TimeLinePage extends React.Component {
   static async getInitialProps() {
+    const query = groq`*[_type == "timelineEvent"] {
+      _id,
+      year,
+      story[]{
+        ...,
+        "historyImage": *[_type=='historyImage' && _id == ^._ref][0]{ 
+          ...
+        }
+      }
+    }[0...100] | order(year)`
+    const events = await client.fetch(query)
+    const tocData = await getTocDataForPageType('historyArticle', 'tidslinje');
+
     return {
-      data: await client.fetch(query)
+      events,
+      tocData
     }
   }
 
   render() {
-    const {data} = this.props
+    const {events, tocData} = this.props
     const breadcrumbs = [
       {
         'title': 'Om Huset',
@@ -48,11 +52,11 @@ export default class TimeLinePage extends React.Component {
     }
 
     return (
-      <Layout>
+      <Layout pageType="timeline-page">
         <PageHeader pageTitle="Tidslinje" breadcrumbs={breadcrumbs}></PageHeader>
         <article className="timeline-article">
           <ul className="timeline">
-            {data.map(event => (
+            {events.map(event => (
               <li key={event._id} className="event">
                 <div className="event-content">
                   <h2>{event.year}</h2>
@@ -62,6 +66,7 @@ export default class TimeLinePage extends React.Component {
             ))}
           </ul>
         </article>
+        <MainNavigation data={tocData} path="/om-huset"/>
       </Layout>
     )
   }

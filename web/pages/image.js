@@ -5,6 +5,8 @@ import Layout from '../components/layout'
 import Image from '../components/image'
 import ImageList from '../components/image-list'
 import PageHeader from '../components/page-header'
+import MainNavigation from '../components/main-navigation'
+import getTocDataForPageType from '../helpers/get-toc-data-for-page-type.js'
 import '../sass/history-images-page.scss'
 
 export default class ImagePage extends React.Component {
@@ -12,17 +14,17 @@ export default class ImagePage extends React.Component {
     const {id} = context.query
     const selectedImageData = await client.fetch(groq`*[_type == "historyImage" && _id == $id] { ... }[0]`, { id })
     const allImagesData = await client.fetch(groq`*[_type == "historyImage" && _id != $id] { ... }[0...200] | order(year)`, { id })
+    const tocData = await getTocDataForPageType('historyArticle', 'bilder');
 
     return {
-      data: {
-        selectedImageData, 
-        allImagesData
-      }
+      selectedImageData, 
+      allImagesData,
+      tocData
     }
   }
 
   render() {
-    const {data} = this.props
+    const {selectedImageData, allImagesData, tocData} = this.props
     const breadcrumbs = [
       {
         'title': 'Om Huset',
@@ -35,12 +37,13 @@ export default class ImagePage extends React.Component {
     ]
 
     return (
-      <Layout>
+      <Layout pageType="images-page">
         <PageHeader pageTitle="Bilder" breadcrumbs={breadcrumbs}></PageHeader>
         <div className="history-image-container">
-          <Image data={data.selectedImageData} imagesize="large"/>
+          <Image data={selectedImageData} imagesize="large"/>
         </div>
-        <ImageList images={data.allImagesData}/>
+        <ImageList images={allImagesData}/>
+        <MainNavigation data={tocData} path="/om-huset"/>
       </Layout>
     )
   }

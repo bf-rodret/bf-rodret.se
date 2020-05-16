@@ -87,4 +87,27 @@
       }
     }
   }
+
+  .main-navigation {
+    border-top: 5px solid #5CA685;
+    margin-top: 30px;
+    padding-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 600px;
+
+    a {
+      color: #5CA685 !important;
+      font-size: 20px;
+      opacity: 1;
+
+      @media screen and (min-width: 800px) { 
+        font-size: 20px;
+      }
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
 }
