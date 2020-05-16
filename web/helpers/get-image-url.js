@@ -10,5 +10,5 @@ const imageSizes = {
 
 export default function() {
   const {imageObject, imageSize = 'small'} = arguments[0]
-  return builder.image(imageObject).width(imageSizes[imageSize]).url()
+  return builder.image(imageObject).fit('max').width(imageSizes[imageSize]).url()
 }
