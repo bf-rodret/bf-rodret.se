@@ -11,7 +11,7 @@ export default class ImagePage extends React.Component {
   static async getInitialProps(context) {
     const {id} = context.query
     const selectedImageData = await client.fetch(groq`*[_type == "historyImage" && _id == $id] { ... }[0]`, { id })
-    const allImagesData = await client.fetch(groq`*[_type == "historyImage"] { ... }[0...200] | order(year)`)
+    const allImagesData = await client.fetch(groq`*[_type == "historyImage" && _id != $id] { ... }[0...200] | order(year)`, { id })
 
     return {
       data: {
