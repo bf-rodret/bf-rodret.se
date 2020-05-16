@@ -1,6 +1,6 @@
 import client from '../client'
 import Link from 'next/link'
-import '../sass/history-image.scss'
+import '../sass/main-navigation.scss'
 
 export default class MainNavigation extends React.Component {
   render() {

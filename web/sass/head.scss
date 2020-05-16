@@ -1,9 +1,22 @@
 .page-header {
-  margin: 0 0 40px 0;
+  margin: 0 0 30px 0;
+
+  @media screen and (min-width: 800px) {
+    margin-bottom: 40px;
+  }
 }
 
 .page-title {
+  font-size: 35px;
   margin: 0;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -6px;
+
+  @media screen and (min-width: 800px) {
+    font-size: 70px;
+    letter-spacing: -13px;
+  }
 }
 
 .page-navigation {
@@ -30,4 +43,22 @@
 .page-navigation-part + .page-navigation-part:before {
   content: ' / ';
   font-weight: bold;
+}
+
+.hero-image-container {
+  margin: 0px;
+  position: relative;
+  margin: -40% -30px 0px -30px;
+
+  @media screen and (min-width: 800px) {
+    margin-left: -40px;
+    margin-right: -40px;
+  }
+}
+
+.hero-image {
+  width: 100%;
+}
+
+.page-title {
 }

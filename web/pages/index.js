@@ -2,7 +2,7 @@ import groq from 'groq'
 import client from '../client'
 import getImageURL from '../helpers/get-image-url'
 import Layout from '../components/layout'
-import Link from 'next/link'
+import PageHeader from '../components/page-header'
 import MainNavigation from '../components/main-navigation'
 
 const query = groq`*[_id == "start"][0]{
@@ -38,6 +38,7 @@ export default class IndexPage extends React.Component {
 
   render() {
     const {data, childPages} = this.props
+
     return (
       <Layout>
         <div className="page-header">
@@ -46,9 +47,9 @@ export default class IndexPage extends React.Component {
               className="hero-image"
               src={getImageURL({imageObject: data.hero, imageSize: 'large'})}
             />
-            <h1 className="hero-title">{data.title}</h1>
           </div>
         </div>
+        <PageHeader pageTitle={data.title} showPageNavigation={false}/>
         <MainNavigation data={childPages}/>
       </Layout>
     )

@@ -4,9 +4,11 @@ import "../sass/head.scss"
 
 export default class Head extends React.Component {
   render() {
-    const breadcrumbs = this.props.breadcrumbs || []
-    return (
-      <div className="page-header">
+    const {pageTitle, breadcrumbs = [], showPageNavigation} = this.props
+    let PageNavigation = '';
+
+    if (typeof showPageNavigation == 'undefined' || showPageNavigation == true) {
+      PageNavigation = 
         <nav className="page-navigation">
           <span className="page-navigation-part">
             ←
@@ -22,7 +24,12 @@ export default class Head extends React.Component {
             </span>
           ))}
         </nav>
-        <h1 className="page-title">{this.props.pageTitle}</h1>
+    }
+
+    return (
+      <div className="page-header">
+        {PageNavigation}
+        <h1 className="page-title">{pageTitle}</h1>
       </div>
     )
   }

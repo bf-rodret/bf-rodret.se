@@ -7,7 +7,11 @@ body {
 }
 
 .main {
-  padding: 40px;
+  padding: 30px;
+
+  @media screen and (min-width: 800px) { 
+    padding: 40px;
+  }
 }
 
 h1, h2, h3 {
@@ -26,57 +30,8 @@ p {
   margin: 0 0 20px 0;
 }
 
-h1 {
-  font-size: 70px;
-  margin: 0 0 20px 0;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: -13px;
-}
-
-.hero-image-container {
-  margin: 0px;
-  position: relative;
-  margin: -40% -40px 40px -40px;
-}
-
-.hero-image {
-  width: 100%;
-}
-
-.hero-title {
-  font-size: 70px;
-  margin: 20px 20px 20px 27px;
-  color: #fff;
-  text-transform: uppercase;
-}
-
-.main-navigation {
-  margin: 0;
-  padding: 0;
-
-  a {
-    display: inline-block;
-    margin: 0 0 10px 0;
-    font-size: 40px;
-    font-weight: 500;
-    font-family: 'Montserrat', sans-serif;
-    color: #fff;
-    opacity: .65;
-
-    &:hover {
-      opacity: .8;
-    }
-  }
-  li {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
-}
-
 .footer {
-  padding: 40px;
+  padding: 30px;
   margin-top: 40px;
   border-top: 1px solid rgba(255, 255, 255, .25);
   color: #fff;
@@ -85,5 +40,9 @@ h1 {
   a {
     color: #fff;
     opacity: .65;
+  }
+
+  @media screen and (min-width: 800px) { 
+    padding: 40px;
   }
 }

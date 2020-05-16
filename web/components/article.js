@@ -1,7 +1,6 @@
 import BlockContent from '@sanity/block-content-to-react'
 import client from '../client'
 import Image from '../components/image'
-import "../sass/article.scss"
 import "../sass/rich-text.scss"
 
 export default class Article extends React.Component {
@@ -20,9 +19,14 @@ export default class Article extends React.Component {
       }
     }
 
+    let Lead = ''
+    if (data.lead) {
+      Lead = <div className="lead">{data.lead}</div>
+    }
+
     return (
       <article className="article">
-        <div className="lead">{data.lead}</div>
+        {Lead}
         <BlockContent className="rich-text" blocks={data.body} serializers={serializers} {...client.config()}/>
       </article>
     )
