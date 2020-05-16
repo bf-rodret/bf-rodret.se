@@ -1,0 +1,35 @@
+.article-page {
+  background: #fff;
+  border-top: 5px solid #5CA685;
+
+  .page-header,
+  .page-title {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #5CA685;
+    text-align: center;
+
+    a {
+      color: #5CA685;
+      opacity: 1;
+    }
+  }
+
+  .page-navigation {
+    color: #5CA685;
+    margin-bottom: 40px;
+  }
+
+  .page-header {
+    margin-bottom: 15px;
+  }
+
+  .article {
+    p, h2, h3, h4, ul, ol {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 600px;
+    }
+  }
+}

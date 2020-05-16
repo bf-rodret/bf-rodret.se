@@ -1,15 +1,9 @@
 import groq from 'groq'
 import client from '../client'
-import imageUrlBuilder from '@sanity/image-url'
+import getImageURL from '../helpers/get-image-url'
 import Layout from '../components/layout'
 import Link from 'next/link'
 import MainNavigation from '../components/main-navigation'
-
-const builder = imageUrlBuilder(client)
- 
-function urlFor(source) {
-  return builder.image(source)
-}
 
 const query = groq`*[_id == "start"][0]{
   title,
@@ -50,9 +44,7 @@ export default class IndexPage extends React.Component {
           <div className="hero-image-container">
             <img
               className="hero-image"
-              src={urlFor(data.hero)
-                .width(1600)
-                .url()}
+              src={getImageURL({imageObject: data.hero, imageSize: 'large'})}
             />
             <h1 className="hero-title">{data.title}</h1>
           </div>

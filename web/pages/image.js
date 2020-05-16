@@ -1,17 +1,11 @@
 import React from 'react'
 import groq from 'groq'
 import client from '../client'
-import imageUrlBuilder from '@sanity/image-url'
 import Layout from '../components/layout'
 import Image from '../components/image'
 import ImageList from '../components/image-list'
 import PageHeader from '../components/page-header'
 import '../sass/history-images-page.scss'
-
-const builder = imageUrlBuilder(client)
-function urlFor(source) {
-  return builder.image(source)
-}
 
 export default class ImagePage extends React.Component {
   static async getInitialProps(context) {
@@ -44,7 +38,7 @@ export default class ImagePage extends React.Component {
       <Layout>
         <PageHeader pageTitle="Bilder" breadcrumbs={breadcrumbs}></PageHeader>
         <div className="history-image-container">
-          <Image data={data.selectedImageData}/>
+          <Image data={data.selectedImageData} imagesize="large"/>
         </div>
         <ImageList images={data.allImagesData}/>
       </Layout>

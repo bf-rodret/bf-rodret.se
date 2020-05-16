@@ -11,13 +11,30 @@
 
   p:last-child, 
   ul:last-child {
-    margin: 0;
+    margin-bottom: 0;
   }
 
   ul {
     margin: 0 0 20px 0;
     padding: 0 0 0 20px;
   }
-  
+
+  h2, h3, h4 {
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0;
+    font-weight: bold;
+  }
+
+  h2 {
+    font-size: 26px;
+    margin-bottom: 20px;
+    margin-top: 50px;
+  }
+
+  h3 {
+    font-size: 20px;
+    margin-bottom: 5px;
+    margin-top: 30px;
+  }
 }
 

@@ -1,19 +1,15 @@
-import imageUrlBuilder from '@sanity/image-url'
+//import imageUrlBuilder from '@sanity/image-url'
 import client from '../client'
 import Link from 'next/link'
 import '../sass/history-image.scss'
-
-const builder = imageUrlBuilder(client)
-function urlFor(source) {
-  return builder.image(source)
-}
+import getImageURL from '../helpers/get-image-url'
 
 const ConditionalWrapper = ({ condition, wrapper, children }) => 
   condition ? wrapper(children) : children;
 
 export default class Image extends React.Component {
   render() {
-    const {data, link, showcaption} = this.props
+    const {data, link, showcaption, imagesize = 'small'} = this.props
     
     let caption;
 
@@ -25,13 +21,18 @@ export default class Image extends React.Component {
       }
     }
 
+    const imageUrl = getImageURL({
+      imageObject: data.image,
+      imageSize : imagesize
+    })
+
     return (
       <figure className="history-image">
         <ConditionalWrapper
           condition={link}
           wrapper={children => <Link href={'/om-huset/bilder/' + data._id}><a>{children}</a></Link>}
         >
-          <img src={urlFor(data.image).url()}/>
+          <img src={imageUrl}/>
           {caption}
           
       </ConditionalWrapper>
