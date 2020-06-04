@@ -12,8 +12,18 @@ import '../sass/history-images-page.scss'
 export default class ImagePage extends React.Component {
   static async getInitialProps(context) {
     const {id} = context.query
-    const selectedImageData = await client.fetch(groq`*[_type == "historyImage" && _id == $id] { ... }[0]`, { id })
-    const allImagesData = await client.fetch(groq`*[_type == "historyImage" && _id != $id] { ... }[0...200] | order(year)`, { id })
+    const selectedImageData = await client.fetch(groq`*[_type == "historyImage" && _id == $id] {
+        ...,
+        "image": image.asset->{
+          ...
+        }
+      }[0]`, { id })
+    const allImagesData = await client.fetch(groq`*[_type == "historyImage"] {
+        ...,
+        "image": image.asset->{
+          ...
+        }
+      } | order(year)`, { id })
     const tocData = await getTocDataForPageType('historyArticle', 'bilder');
 
     return {

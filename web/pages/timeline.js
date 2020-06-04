@@ -18,7 +18,10 @@ export default class TimeLinePage extends React.Component {
       story[]{
         ...,
         "historyImage": *[_type=='historyImage' && _id == ^._ref][0]{ 
-          ...
+          ...,
+          "image": image.asset->{
+            ...
+          }
         }
       }
     }[0...100] | order(year)`

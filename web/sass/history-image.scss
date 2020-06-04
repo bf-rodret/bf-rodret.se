@@ -1,7 +1,7 @@
 .history-image {
-  padding: 30px;
   background: #fff;
   border-radius: 3px;
+  overflow: hidden;
 
   a {
     color: #5CA685;
@@ -15,12 +15,28 @@
     }
   }
 
+  &-wrapper {
+    position: relative;
+    background-size: cover;
+    &::before {
+      display: block;
+      content: "";
+      width: 100%;
+    }
+  }
+
   img {
     width: 100%;
+    margin: 0 auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
   }
 
   figcaption {
-    margin: 10px 0 0 0;
+    padding: 20px 30px 30px 30px;
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     color: #5CA685;

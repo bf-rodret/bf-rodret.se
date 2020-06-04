@@ -13,8 +13,11 @@ const query = groq`*[_type == "historyArticle" && slug.current == $slug][0]{
   lead,
   body[]{
     ...,
-    "historyImage": *[_type=='historyImage' && _id == ^._ref][0]{ 
-      ...
+    "historyImage": *[_type=='historyImage' && _id == ^._ref][0]{
+      ...,
+      "image": image.asset->{
+        ...
+      }
     }
   }
 }`

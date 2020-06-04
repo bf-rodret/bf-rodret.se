@@ -11,7 +11,10 @@ import '../sass/history-images-page.scss'
 export default class ImagesPage extends React.Component {
   static async getInitialProps() {
     const query = groq`*[_type == "historyImage"] {
-      ...
+      ...,
+      "image": image.asset->{
+        ...
+      }
     } | order(year)`
     const images = await client.fetch(query)
     const tocData = await getTocDataForPageType('historyArticle', 'bilder');

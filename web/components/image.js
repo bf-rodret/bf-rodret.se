@@ -32,7 +32,10 @@ export default class Image extends React.Component {
           condition={link}
           wrapper={children => <Link href={'/om-huset/bilder/' + data._id}><a>{children}</a></Link>}
         >
-          <img src={imageUrl}/>
+          <div className="history-image-wrapper" style={{
+            backgroundImage: `url(${data.image.metadata.lqip})`,
+            paddingTop: `calc(100% / ${data.image.metadata.dimensions.aspectRatio})`
+           }}><img src={imageUrl}/></div>
           {caption}
           
       </ConditionalWrapper>
