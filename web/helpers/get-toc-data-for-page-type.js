@@ -2,8 +2,6 @@ import groq from 'groq'
 import client from '../client'
 
 export default async function(type, excludeId) {
-  console.log(excludeId)
-
   const data = await client.fetch(
     groq`*[_type == "${type}"${excludeId ? ' && _id != "' + excludeId + '"' : ''}] {
       _id,

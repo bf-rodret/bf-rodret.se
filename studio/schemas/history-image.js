@@ -6,6 +6,9 @@ export default {
     {
       title: "Bild",
       name: "image",
+      options: {
+        metadata: ['lqip']
+      },
       type: "image"
     },
     {

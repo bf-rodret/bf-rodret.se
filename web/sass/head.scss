@@ -48,11 +48,27 @@
 .hero-image-container {
   margin: 0px;
   position: relative;
-  margin: -40% -30px 0px -30px;
+  margin: -30px -30px 0px -30px;
+  position: relative;
+  background-size: cover;
+
+  &::before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: 35%;
+  }
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
 
   @media screen and (min-width: 800px) {
-    margin-left: -40px;
-    margin-right: -40px;
+    margin: -40px -40px 0px -40px;
   }
 }
 

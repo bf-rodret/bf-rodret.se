@@ -7,7 +7,9 @@ import MainNavigation from '../components/main-navigation'
 
 const query = groq`*[_id == "start"][0]{
   title,
-  hero
+  "heroImage": hero.asset->{
+    ...
+  }
 }`
 
 export default class IndexPage extends React.Component {
@@ -38,16 +40,16 @@ export default class IndexPage extends React.Component {
 
   render() {
     const {data, childPages} = this.props
-
     return (
       <Layout>
         <div className="page-header">
-          <div className="hero-image-container">
-            <img
+          <div className="hero-image-container" style={{
+              backgroundImage: `url(${data.heroImage.metadata.lqip})`
+            }}>
+              <img
               className="hero-image"
-              src={getImageURL({imageObject: data.hero, imageSize: 'large'})}
-            />
-          </div>
+              src={getImageURL({imageObject: data.heroImage, imageSize: 'large', ratio: 0.35})}/>
+            </div>
         </div>
         <PageHeader pageTitle={data.title} showPageNavigation={false}/>
         <MainNavigation data={childPages}/>

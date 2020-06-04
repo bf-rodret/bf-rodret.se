@@ -12,6 +12,9 @@ export default {
     {
       title: 'Hero-bild',
       type: 'image',
+      options: {
+        metadata: ['lqip']
+      },
       name: 'hero'
     }
   ]
