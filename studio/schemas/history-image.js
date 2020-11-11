@@ -17,6 +17,12 @@ export default {
       type: "number"
     },
     {
+      type: 'reference',
+      name: 'type',
+      title: 'Type',
+      to: [{type: 'historyImageType'}]
+    },
+    {
       title: "Beskrivning",
       name: "caption",
       type: "text"
