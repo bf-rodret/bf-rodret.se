@@ -1,31 +1,26 @@
 {
-  "name": "bfrodret",
+  "name": "bf-rodret",
   "private": true,
   "version": "1.0.0",
   "description": "",
   "main": "package.json",
-  "author": "Martin Lissmyr <martin.lissmyr@oktavilla.se>",
+  "author": "Martin Lissmyr",
   "license": "UNLICENSED",
   "scripts": {
     "start": "sanity start",
-    "test": "sanity check"
+    "build": "sanity build",
+    "dev": "sanity dev"
   },
   "keywords": [
     "sanity"
   ],
   "dependencies": {
-    "@sanity/base": "^2.0.9",
-    "@sanity/components": "^2.0.9",
-    "@sanity/core": "^2.0.9",
-    "@sanity/dashboard": "^2.0.9",
-    "@sanity/default-layout": "^2.0.9",
-    "@sanity/default-login": "^2.0.9",
-    "@sanity/desk-tool": "^2.0.9",
-    "@sanity/vision": "^2.0.9",
-    "prop-types": "^15.6",
-    "react": "^16.9",
-    "react-dom": "^16.9",
-    "sanity-plugin-dashboard-widget-netlify": "^1.0.1"
-  },
-  "devDependencies": {}
+    "@sanity/block-tools": "^3.12.0",
+    "@sanity/vision": "^3.5.0",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sanity": "^3.16.4",
+    "styled-components": "^5.3.6"
+  }
 }
