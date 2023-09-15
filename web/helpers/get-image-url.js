@@ -1,16 +1,8 @@
-import imageUrlBuilder from '@sanity/image-url'
-import client from '../client'
+import {urlFor} from '../client'
+import imageSizes from '/constants/image-sizes';
 
-const builder = imageUrlBuilder(client)
-
-const imageSizes = {
-  large: 1200,
-  small: 600,
-}
-
-export default function() {
-  const {imageObject, imageSize = 'small', ratio} = arguments[0]
-  const asset = builder.image(imageObject).fit('max').width(imageSizes[imageSize]);
+export default function({imageObject, imageSize = 'small', ratio}) {
+  const asset = urlFor(imageObject).fit('max').width(imageSizes[imageSize]);
   if (ratio) {
     return asset.height(imageSizes[imageSize]*ratio).url();
   }

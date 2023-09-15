@@ -1,8 +1,24 @@
+@use "vars";
+
 .page-header {
   margin: 0 0 30px 0;
 
   @media screen and (min-width: 800px) {
     margin-bottom: 40px;
+  }
+
+  &__subtitle {
+    font-family: vars.$font--title;
+    font-size: 25px;
+    margin: 6px 0 0 0;
+    color: vars.$color-text__highlighted__light;
+    text-transform: uppercase;
+    letter-spacing: -6px;
+
+    @media screen and (min-width: 800px) {
+      font-size: 32px;
+      letter-spacing: -5px;
+    }
   }
 }
 
@@ -21,8 +37,8 @@
 
 .page-navigation {
   font-weight: bold;
-  font-family: 'Montserrat', sans-serif;
-  margin: 0 0 5px 0;
+  font-family: vars.$font--meta;
+  margin: 0 0 15px 0;
   color: #fff;
 
   a {
@@ -50,21 +66,12 @@
   position: relative;
   margin: -30px -30px 0px -30px;
   position: relative;
-  background-size: cover;
 
   &::before {
     display: block;
     content: "";
     width: 100%;
     padding-top: 35%;
-  }
-
-  img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
   }
 
   @media screen and (min-width: 800px) {

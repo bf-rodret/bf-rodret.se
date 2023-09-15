@@ -1,0 +1,14 @@
+// Font stacks
+$font--title: var(--font-lexend-zetta), sans-serif;
+$font--body: var(--font-pt-serif), "Georgia", serif;
+$font--meta: var(--font-montserrat), sans-serif;
+
+// Colors
+$color-background: #5CA685;
+
+$color-text: #222;
+$color-text__highlighted: #5CA685;
+$color-text__highlighted__light: lighten(#5CA685, 30);
+$color-text__highlighted__extralight: lighten(#5CA685, 40);
+
+$color-ui__divider: #5CA685;

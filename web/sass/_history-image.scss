@@ -1,3 +1,5 @@
+@use "vars";
+
 .history-image {
   background: #fff;
   border-radius: 3px;
@@ -15,29 +17,15 @@
     }
   }
 
-  &-wrapper {
-    position: relative;
-    background-size: cover;
-    &::before {
-      display: block;
-      content: "";
-      width: 100%;
-    }
-  }
-
   img {
     width: 100%;
-    margin: 0 auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    height: auto;
   }
 
   figcaption {
     padding: 20px 30px 30px 30px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: vars.$font--meta;
+    line-height: 1.4;
     font-size: 16px;
     color: #5CA685;
     text-align: center;

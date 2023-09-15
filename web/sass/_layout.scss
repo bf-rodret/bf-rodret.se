@@ -1,0 +1,84 @@
+@use "vars";
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  color: vars.$color-text;
+}
+
+.main {
+  font-family: vars.$font--body;
+  font-size: 18px;
+  display: flex;
+  height: 100%;
+  flex-flow: column;
+}
+
+.page,
+.article-page,
+.images-page,
+.timeline-page {
+  flex: 1 1 auto;
+
+  padding: 30px;
+
+  @media screen and (min-width: 800px) { 
+    padding: 40px;
+  }
+}
+
+.page,
+.images-page,
+.timeline-page {
+  background: #5CA685;
+}
+
+.article-page {
+  background: #fff;
+  border-top: 5px solid #5CA685;
+}
+
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3 {
+  font-weight: 500;
+  font-family: vars.$font--title;
+  margin: 0;
+  letter-spacing: -6px;
+}
+
+a {
+  text-decoration: none;
+  color: #4280B8;
+}
+
+p {
+  margin: 0 0 16px 0;
+}
+
+.footer {
+  flex: 0 1 auto;
+  &__content {
+    padding: 30px;
+    border-top: 1px solid rgba(255, 255, 255, .25);
+    color: #fff;
+    background: #5CA685;
+
+    @media screen and (min-width: 800px) { 
+      padding: 40px;
+    }
+
+    a {
+      color: #fff;
+      opacity: .65;
+    }  
+  }
+}

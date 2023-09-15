@@ -1,5 +1,5 @@
 import groq from 'groq'
-import client from '../client'
+import {client} from '../client'
 
 export default async function(type, excludeId) {
   const data = await client.fetch(

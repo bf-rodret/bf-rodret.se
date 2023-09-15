@@ -1,3 +1,5 @@
+@use "vars";
+
 .main-navigation {
   margin: 0;
   padding: 0;
@@ -8,16 +10,15 @@
     margin: 0 0 20px 0;
     font-size: 30px;
     font-weight: 500;
-    font-family: 'Montserrat', sans-serif;
-    color: #fff;
-    opacity: .65;
+    font-family: vars.$font--meta;
+    color: vars.$color-text__highlighted__light;
 
     @media screen and (min-width: 800px) { 
       font-size: 40px;
     }
 
     &:hover {
-      opacity: .8;
+      color: vars.$color-text__highlighted__extralight;
     }
   }
 
@@ -25,5 +26,14 @@
     list-style-type: none;
     margin: 0;
     padding: 0;
+  }
+
+  &:before {
+    margin: 0 0 40px 0;
+    content: "";
+    display: block;
+    width: 100px;
+    height: 5px;
+    background: white;
   }
 }
