@@ -29,9 +29,18 @@ async function getData(slug: string) {
 	}
 }
 
-export default async function InformationArticlePage({params}) {
+// Return a list of `params` to populate the [slug] dynamic segment
+export async function generateStaticParams() {
+  const pages = await client.fetch(groq`*[_type == "informationArticle"]{ "slug": slug.current }`);
 
-	const data = await getData(params.slug);
+  return pages.map((page) => ({
+    slug: page.slug,
+  }));
+}
+
+export default async function InformationArticlePage({params}) {
+  const { slug } = params;
+	const data = await getData(slug);
   const breadcrumbs: Array<Breadcrumb> = [
     {
       'title': 'Föreningen',

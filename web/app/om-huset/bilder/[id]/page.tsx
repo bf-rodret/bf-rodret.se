@@ -29,6 +29,15 @@ async function getData(id) {
   }
 }
 
+// Return a list of `params` to populate the [slug] dynamic segment
+export async function generateStaticParams() {
+  const pages = await client.fetch(groq`*[_type == "historyImage"]{ _id }`);
+
+  return pages.map((page) => ({
+    id: page._id,
+  }));
+}
+
 export default async function ImagePage({params}) {
   const data = await getData(params.id);
   const breadcrumbs = [

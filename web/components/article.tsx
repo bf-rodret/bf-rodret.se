@@ -21,7 +21,6 @@ export default function Article({data}) {
   };
 
   const LinkableSubHeadline: PortableTextTypeComponent<PortableTextBlock> = ({value}) => {
-    console.log(value);
     const str = value.children[0].text;
     const slug = slugify(str, { 
       lower: true, 

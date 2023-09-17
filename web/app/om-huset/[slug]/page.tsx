@@ -28,6 +28,15 @@ async function getData(slug) {
   }
 }
 
+// Return a list of `params` to populate the [slug] dynamic segment
+export async function generateStaticParams() {
+  const pages = await client.fetch(groq`*[_type == "historyArticle"]{ "slug": slug.current }`);
+
+  return pages.map((page) => ({
+    slug: page.slug,
+  }));
+}
+
 export default async function HistoryArticlePage({params}) {
 
   const data = await getData(params.slug);
