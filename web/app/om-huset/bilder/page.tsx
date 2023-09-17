@@ -1,19 +1,17 @@
 import groq from 'groq'
-import {client} from '/client'
-import ImageList from '/components/image-list'
-import PageHeader from '/components/page-header'
-import MainNavigation from '/components/main-navigation'
-import getTocDataForPageType from '/helpers/get-toc-data-for-page-type.js'
+import {client} from 'client'
+import ImageList from 'components/image-list'
+import PageHeader from 'components/page-header'
+import MainNavigation from 'components/main-navigation'
+import getTocDataForPageType from 'helpers/get-toc-data-for-page-type.js'
 
 const query = groq`*[_type == "historyImage"] {
   ...,
-  "image": image.asset->{
-    ...
-  }
+  "metadata": image.asset -> { metadata }
 } | order(year)`
 
-async function getData(slug) {
-  const images = await client.fetch(query)
+async function getData() {
+  const images = await client.fetch(query);
   const tocData = await getTocDataForPageType('historyArticle', 'bilder');
 
   return {
@@ -21,7 +19,6 @@ async function getData(slug) {
     tocData
   }
 }
-
 
 export default async function ImagesPage() {
   const data = await getData();

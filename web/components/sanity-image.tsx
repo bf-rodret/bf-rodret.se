@@ -1,7 +1,7 @@
 import {getImageDimensions} from "@sanity/asset-utils";
-import Image, {ImageProps} from "next/image";
-import {urlFor} from "/client";
-import {AssetType} from "/types/Asset";
+import Image, {ImageProps} from "next/legacy/image";
+import {urlFor} from "client";
+import {AssetType} from 'types/Asset';
 
 type Props = Omit<ImageProps, "src" | "height"> & {
   width?: number;
@@ -72,6 +72,11 @@ export default function SanityImage({width, height, image, ...props}: Props) {
       src: imageUrl,
       ...props
     };
+  }
+
+  if (image.metadata && image.metadata.lqip) {
+    componentProps.placeholder = "blur";
+    componentProps.blurDataURL = image.metadata.lqip
   }
 
   return (

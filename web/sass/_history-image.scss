@@ -20,6 +20,14 @@
   img {
     width: 100%;
     height: auto;
+    display: block;
+    margin: 0;
+  }
+
+  figure {
+    text-align: center;
+    background: #333;
+    padding: 0;
   }
 
   figcaption {

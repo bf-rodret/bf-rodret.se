@@ -1,9 +1,10 @@
-import groq from 'groq'
-import {client} from '/client'
-import PageHeader from '/components/page-header'
-import Article from '/components/article'
-import MainNavigation from '/components/main-navigation'
-import getTocDataForPageType from '/helpers/get-toc-data-for-page-type.js'
+import groq from 'groq';
+import {client} from 'client';
+import PageHeader from 'components/page-header';
+import Article from 'components/article';
+import MainNavigation from 'components/main-navigation';
+import getTocDataForPageType from 'helpers/get-toc-data-for-page-type.js';
+import {Breadcrumb} from 'types/Breadcrumb';
 
 const query = groq`*[_type == "informationArticle" && slug.current == $slug][0]{
   _id,
@@ -13,14 +14,12 @@ const query = groq`*[_type == "informationArticle" && slug.current == $slug][0]{
     ...,
     "historyImage": *[_type=='historyImage' && _id == ^._ref][0]{
       ...,
-      "image": image.asset->{
-        ...
-      }
+      "metadata": image.asset -> { metadata }
     }
   }
 }`
 
-async function getData(slug) {
+async function getData(slug: string) {
 	const article = await client.fetch(query, { slug })
 	const tocData = await getTocDataForPageType('informationArticle', article._id);
 
@@ -30,11 +29,10 @@ async function getData(slug) {
 	}
 }
 
-
 export default async function InformationArticlePage({params}) {
 
 	const data = await getData(params.slug);
-  const breadcrumbs = [
+  const breadcrumbs: Array<Breadcrumb> = [
     {
       'title': 'Föreningen',
       'url': '/foreningen'

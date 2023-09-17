@@ -1,11 +1,19 @@
 import Link from 'next/link'
-import SanityImage from '/components/sanity-image';
-import imageSizes from '/constants/image-sizes';
+import SanityImage from 'components/sanity-image';
+import imageSizes from 'constants/image-sizes.json';
+import {HistoryImageType} from 'types/HistoryImage';
 
 const ConditionalWrapper = ({ condition, wrapper, children }) => 
   condition ? wrapper(children) : children;
 
-export default function Image({data, link, showcaption, imagesize = 'small'}) {
+interface Props {
+  data: HistoryImageType;
+  link?: boolean;
+  showcaption?: boolean;
+  imagesize?: string;
+}
+
+export default function HistoryImage({data, link, showcaption, imagesize = 'small'}: Props) {
   let caption;
 
   if (showcaption !== false) {
@@ -16,7 +24,12 @@ export default function Image({data, link, showcaption, imagesize = 'small'}) {
     }
   }
 
-  let sizeProps = {};
+  interface Dimensions {
+    width?: number;
+    height?: number;
+  }
+
+  let sizeProps: Dimensions = {};
 
   if (imagesize == "forcedsmall") {
     sizeProps.width = imageSizes["small"].w;
@@ -31,7 +44,7 @@ export default function Image({data, link, showcaption, imagesize = 'small'}) {
         condition={link}
         wrapper={children => <Link href={'/om-huset/bilder/' + data._id}>{children}</Link>}
       >
-        <SanityImage image={data.image} placeholder="blur" blurDataURL={data.image.metadata.lqip} {...sizeProps}/>
+        <SanityImage image={data.image} {...sizeProps}/>
         {caption}
       </ConditionalWrapper>
     </div>

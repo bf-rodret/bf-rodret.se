@@ -1,25 +1,21 @@
 import groq from 'groq'
-import {client} from '/client'
-import Image from '/components/image'
-import ImageList from '/components/image-list'
-import PageHeader from '/components/page-header'
-import MainNavigation from '/components/main-navigation'
-import getTocDataForPageType from '/helpers/get-toc-data-for-page-type.js'
+import {client} from 'client'
+import HistoryImage from 'components/history-image'
+import ImageList from 'components/image-list'
+import PageHeader from 'components/page-header'
+import MainNavigation from 'components/main-navigation'
+import getTocDataForPageType from 'helpers/get-toc-data-for-page-type.js'
 
 const query = groq`{
   "image": 
     *[_type == "historyImage" && _id == $id] {
       ...,
-      "image": image.asset->{
-        ...
-      }
+      "metadata": image.asset -> { metadata }
     }[0], 
   "images": 
     *[_type == "historyImage"] | order(year) {
       ...,
-      "image": image.asset->{
-        ...
-      }
+      "metadata": image.asset -> { metadata }
     }
   }`
 
@@ -50,7 +46,7 @@ export default async function ImagePage({params}) {
     <div className="images-page">
       <PageHeader pageTitle="Bilder" breadcrumbs={breadcrumbs}></PageHeader>
       <div className="history-image-container">
-        <Image data={data.image} imagesize="large"/>
+        <HistoryImage data={data.image} imagesize="large"/>
       </div>
       <ImageList images={data.images}/>
       <MainNavigation data={data.tocData} path="/om-huset"/>

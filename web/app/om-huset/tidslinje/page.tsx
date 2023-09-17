@@ -1,21 +1,20 @@
 import groq from 'groq'
-import {client} from '/client'
-import Image from '/components/image'
-import PageHeader from '/components/page-header'
-import MainNavigation from '/components/main-navigation'
-import getTocDataForPageType from '/helpers/get-toc-data-for-page-type.js'
-import {PortableText} from "@portabletext/react";
+import {client} from 'client'
+import HistoryImage from 'components/history-image'
+import PageHeader from 'components/page-header'
+import MainNavigation from 'components/main-navigation'
+import getTocDataForPageType from 'helpers/get-toc-data-for-page-type.js'
+import {PortableText, PortableTextTypeComponent} from "@portabletext/react";
+import {HistoryImageReferenceDataType} from "types/HistoryImageReferenceData";
 
 const query = groq`*[_type == "timelineEvent"] {
     _id,
     year,
-    story[]{
+    story[] {
       ...,
       "historyImage": *[_type=='historyImage' && _id == ^._ref][0]{ 
         ...,
-        "image": image.asset->{
-          ...
-        }
+        "metadata": image.asset -> { metadata }
       }
     }
   }[0...100] | order(year)`
@@ -30,7 +29,6 @@ async function getData() {
   }
 }
 
-
 export default async function TimeLinePage() {
   const data = await getData();
   const breadcrumbs = [
@@ -40,15 +38,15 @@ export default async function TimeLinePage() {
     }
   ];
 
-  const HistoryImage: PortableTextTypeComponent<Asset> = ({value}) => {
+  const InlineHistoryImage: PortableTextTypeComponent<HistoryImageReferenceDataType> = ({value}) => {
     return (
-      <Image data={value.historyImage} link={true} showcaption={false} imagesize="forcedsmall"/>
+      <HistoryImage data={value.historyImage} link={true} showcaption={false} imagesize="forcedsmall"/>
     );
   };
 
   const PortableTextComponents = {
     types: {
-      reference: HistoryImage
+      reference: InlineHistoryImage
     }
   };
 

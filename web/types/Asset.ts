@@ -1,7 +1,5 @@
-export type AssetType = {
-  _type: string;
-  asset: {
-    _ref: string;
-    _type: string;
-  };
-};
+import {SanityImageSource, SanityImageMetadata} from "@sanity/asset-utils";
+
+export type AssetType = SanityImageSource & {
+	metadata?: SanityImageMetadata;
+}

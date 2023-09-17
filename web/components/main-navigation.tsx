@@ -1,6 +1,19 @@
 import Link from 'next/link'
 
-export default function MainNavigation({data, path}) {
+type PageType = {
+  _id: string;
+  slug: {
+    current: string;
+  },
+  title: string;
+}
+
+interface Props {
+  data: Array<PageType>;
+  path?: string;
+}
+
+export default function MainNavigation({data, path}: Props) {
   return (
     <ul className="main-navigation">
       {data.map(page => (

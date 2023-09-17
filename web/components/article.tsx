@@ -1,31 +1,34 @@
-import Image from '../components/image';
-import {PortableText} from "@portabletext/react";
+import HistoryImage from '../components/history-image';
+import {PortableText, PortableTextTypeComponent} from "@portabletext/react";
+import {HistoryImageReferenceDataType} from "types/HistoryImageReferenceData";
+import {ArbitraryTypedObject} from "@portabletext/types";
+
+interface Props {
+  data: {
+    body: ArbitraryTypedObject;
+    lead: string;
+  }
+};
 
 export default function Article({data}) {
-  const HistoryImage: PortableTextTypeComponent<Asset> = ({value}) => {
+
+  const InlineHistoryImage: PortableTextTypeComponent<HistoryImageReferenceDataType> = ({value}) => {
     return (
-      <Image data={image} link={true}/>
+      <HistoryImage data={value.historyImage} link={true}/>
     );
   };
 
   const PortableTextComponents = {
     types: {
-      reference: ({value}) => {
-        return (
-          <Image data={value.historyImage} link={true}/>
-        )
-      }
+      reference: InlineHistoryImage
     }
   };
 
-  let Lead = ''
-  if (data.lead) {
-    Lead = <div className="lead">{data.lead}</div>
-  }
-
   return (
     <article className="article">
-      {Lead}
+      {data.lead && (
+        <div className="lead">{data.lead}</div>
+      )}
       <div className="rich-text">
         <PortableText value={data.body} components={PortableTextComponents} />
       </div>
