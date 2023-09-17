@@ -1,7 +1,7 @@
 import {createClient} from 'next-sanity';
 import createImageUrlBuilder from '@sanity/image-url'
 
-const config = {
+export const config = {
   projectId: 'bjnjq7k1',
   dataset: 'production',
   useCdn: true, // set to `true` to fetch from edge cache

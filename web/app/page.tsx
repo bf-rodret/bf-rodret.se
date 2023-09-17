@@ -45,7 +45,7 @@ export default async function Page() {
     <div className="page">
       <div className="page-header">
         <div className="hero-image-container">
-          <SanityImage image={data.heroImage} width={900} height={315} layout="fill" priority={true} />
+          <SanityImage image={data.heroImage} width={900} height={167} layout="fill" priority={true} alt="" />
         </div>
       </div>
       <PageHeader pageTitle={data.title} subTitle={data.subTitle} showPageNavigation={false}/>

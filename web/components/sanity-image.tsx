@@ -1,5 +1,5 @@
 import {getImageDimensions} from "@sanity/asset-utils";
-import Image, {ImageProps} from "next/legacy/image";
+import Image, {ImageProps} from "next/image";
 import {urlFor} from "client";
 import {AssetType} from 'types/Asset';
 
@@ -16,22 +16,12 @@ export default function SanityImage({width, height, image, ...props}: Props) {
   let imageUrl;
 
   // Get the correct URL for Sanity
-  if (width && !height) {
-    imageUrl = urlFor(image)
-      .width(width * scaling)
-      .url();
-  } else if (width && height) {
-    imageUrl = urlFor(image)
-      .width(width * scaling)
-      .height(height * scaling)
-      .fit('max')
-      .url();
-  } else if (!width && height) {
-    imageUrl = urlFor(image)
-      .height(height * scaling)
-      .url();
-  } else {
-    imageUrl = urlFor(image).url();
+  if (image && image.asset) {
+    imageUrl = (image.asset._ref).replace("image-", "").replace("-jpg", ".jpg").replace("-png", ".png").replace("-tif", ".tif");
+    if (height && width) {
+      // Later used in image-loader.ts
+      imageUrl += "?ratio=" + width/height;
+    }
   }
 
   // Make sure to keep aspect ratio if width or height props are missing
@@ -59,7 +49,6 @@ export default function SanityImage({width, height, image, ...props}: Props) {
     // Width and Height should be opmitted if using layout fill
     componentProps = {
       src: imageUrl,
-      alt: "",
       itemProp: "url contentUrl",
       ...props
     };
@@ -67,7 +56,6 @@ export default function SanityImage({width, height, image, ...props}: Props) {
     componentProps = {
       width: calculatedWidth,
       height: calculatedHeight,
-      alt: "",
       itemProp: "url contentUrl",
       src: imageUrl,
       ...props

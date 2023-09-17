@@ -44,7 +44,7 @@ export default function HistoryImage({data, link, showcaption, imagesize = 'smal
         condition={link}
         wrapper={children => <Link href={'/om-huset/bilder/' + data._id}>{children}</Link>}
       >
-        <SanityImage image={data.image} {...sizeProps}/>
+        <SanityImage image={data.image} {...sizeProps} alt=""/>
         {caption}
       </ConditionalWrapper>
     </div>

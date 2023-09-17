@@ -21,7 +21,9 @@ const nextConfig = {
     domains: ["cdn.sanity.io"],
     dangerouslyAllowSVG: true,
     // in seconds
-    minimumCacheTTL: 60 * 60 // 1 hour
+    minimumCacheTTL: 60 * 60, // 1 hour
+    loader: "custom",
+    loaderFile: "./image-loader.ts"
   }
 };
 
