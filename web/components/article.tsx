@@ -1,7 +1,9 @@
-import HistoryImage from '../components/history-image';
+import HistoryImage from 'components/history-image';
 import {PortableText, PortableTextTypeComponent} from "@portabletext/react";
 import {HistoryImageReferenceDataType} from "types/HistoryImageReferenceData";
-import {ArbitraryTypedObject} from "@portabletext/types";
+import {ArbitraryTypedObject, PortableTextBlock} from "@portabletext/types";
+import slugify from "slugify";
+import Link from 'next/link';
 
 interface Props {
   data: {
@@ -18,9 +20,26 @@ export default function Article({data}) {
     );
   };
 
+  const LinkableSubHeadline: PortableTextTypeComponent<PortableTextBlock> = ({value}) => {
+    console.log(value);
+    const str = value.children[0].text;
+    const slug = slugify(str, { 
+      lower: true, 
+      locale: "se"
+    });
+    return (
+      <Link href={`#${slug}`}>
+        <h2 id={slug} className="linkable">{str}</h2>
+      </Link>
+    );
+  };
+
   const PortableTextComponents = {
     types: {
       reference: InlineHistoryImage
+    }, 
+    block: {
+      "h2": LinkableSubHeadline
     }
   };
 

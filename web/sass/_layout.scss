@@ -53,6 +53,10 @@ h1, h2, h3 {
   font-family: vars.$font--title;
   margin: 0;
   letter-spacing: -6px;
+
+  &.linkable {
+    color: #333;
+  }
 }
 
 a {

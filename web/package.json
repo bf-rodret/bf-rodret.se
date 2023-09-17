@@ -20,7 +20,8 @@
     "next": "^13.4.19",
     "next-sanity": "^5.5.3",
     "node-sass": "^9.0.0",
-    "sass": "^1.67.0"
+    "sass": "^1.67.0",
+    "slugify": "^1.6.6"
   },
   "devDependencies": {
     "typescript": "5.2.2"
