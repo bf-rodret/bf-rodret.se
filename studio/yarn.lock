@@ -550,6 +550,19 @@
     get-random-values-esm "^1.0.0"
     lodash "^4.17.21"
 
+"@sanity/cli@^3.16.7":
+  version "3.16.7"
+  resolved "https://registry.npmjs.org/@sanity/cli/-/cli-3.16.7.tgz"
+  integrity sha512-Bx27p23f/M9tVMTf50TnUhOJ76mBHQIDXWaf3/9iRTo/xm39H2gfu4H8aITzgGXRncW5HcRdxM+gpJk4YMwNGg==
+  dependencies:
+    "@babel/traverse" "^7.19.0"
+    chalk "^4.1.2"
+    esbuild "^0.19.0"
+    esbuild-register "^3.4.1"
+    get-it "^8.4.3"
+    golden-fleece "^1.0.9"
+    pkg-dir "^5.0.0"
+
 "@sanity/cli@3.16.4":
   version "3.16.4"
   resolved "https://registry.npmjs.org/@sanity/cli/-/cli-3.16.4.tgz"
