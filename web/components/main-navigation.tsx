@@ -1,12 +1,6 @@
 import Link from 'next/link'
-
-type PageType = {
-  _id: string;
-  slug: {
-    current: string;
-  },
-  title: string;
-}
+import {BsChevronRight} from "react-icons/bs"
+import {PageType} from "types/Page";
 
 interface Props {
   data: Array<PageType>;
@@ -19,7 +13,7 @@ export default function MainNavigation({data, path}: Props) {
       {data.map(page => (
         <li key={page._id}>
           <Link href={{pathname: (path || '') + '/' + page.slug.current}}>
-            {page.title}
+            <BsChevronRight/>{page.title}
           </Link>
         </li>
       ))}

@@ -54,6 +54,12 @@
       font-weight: bold;
     }
   }
+
+  svg {
+    position: relative;
+    top: 3px;
+    margin: 0 3px 0 0;
+  }
 }
 
 .page-navigation-part + .page-navigation-part:before {

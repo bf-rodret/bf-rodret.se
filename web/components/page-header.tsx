@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import {Breadcrumb} from 'types/Breadcrumb';
+import {BsArrowLeft} from "react-icons/bs"
 
 interface Props {
   pageTitle?: string;
@@ -14,8 +15,8 @@ export default function Head({pageTitle, subTitle = "", breadcrumbs = [], showPa
       {showPageNavigation && (
         <nav className="page-navigation">
           <span className="page-navigation-part">
-            ←
             <Link className="page-navigation-main" href="/">
+              <BsArrowLeft />
               BF Rodret 2 Gröndal
             </Link>
           </span>

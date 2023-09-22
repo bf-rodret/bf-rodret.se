@@ -11,7 +11,7 @@ export default async function Page() {
 
   return (
     <div className="page">
-      <PageHeader pageTitle="Föreningen"></PageHeader>
+      <PageHeader pageTitle="Medlems&shy;information"></PageHeader>
       <MainNavigation data={data} path="/foreningen"/>
     </div>
   )

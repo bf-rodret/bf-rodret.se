@@ -3,6 +3,9 @@ import {client} from 'client';
 import SanityImage from 'components/sanity-image';
 import PageHeader from 'components/page-header';
 import MainNavigation from 'components/main-navigation';
+import rootPages from 'constants/root-pages.json';
+import {PageType} from 'types/Page';
+import {AssetType} from 'types/Asset';
 
 const query = groq`*[_id == "start"][0]{
   title,
@@ -17,29 +20,19 @@ async function getData() {
   const heroImageData = await client.fetch(query);
   return {
     ...heroImageData,
-    childPages: [
-      {
-        _id: 'foreningen',
-        slug: {
-          _type: 'slug',
-          current: 'foreningen'
-        },
-        title: 'Föreningen'
-      },
-      {
-        _id: 'om-huset',
-        slug: {
-          _type: 'slug',
-          current: 'om-huset'
-        },
-        title: 'Om huset'
-      },
-    ]
+    childPages: rootPages
   }
 }
 
+interface Props {
+  title: string;
+  subTitle: string;
+  heroImage: AssetType;
+  childPages: Array<PageType>
+}
+
 export default async function Page() {
-  const data = await getData();
+  const data: Props = await getData();
 
   return (
     <div className="page">

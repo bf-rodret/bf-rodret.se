@@ -43,7 +43,7 @@ export default async function InformationArticlePage({params}) {
 	const data = await getData(slug);
   const breadcrumbs: Array<Breadcrumb> = [
     {
-      'title': 'Föreningen',
+      'title': 'Medlemsinformation',
       'url': '/foreningen'
     }
   ]

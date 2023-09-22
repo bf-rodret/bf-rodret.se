@@ -1,0 +1,18 @@
+[
+  {
+    "_id": "foreningen",
+    "slug": {
+      "_type": "slug",
+      "current": "foreningen"
+    },
+    "title": "Medlemsinformation"
+  },
+  {
+    "_id": "om-huset",
+    "slug": {
+      "_type": "slug",
+      "current": "om-huset"
+    },
+    "title": "Om huset"
+  }
+]
