@@ -1,5 +1,6 @@
 import "/sass/main.scss";
 import { Montserrat, Lexend_Zetta, PT_Serif } from 'next/font/google';
+import sharedStrings from "constants/shared-strings.json";
 
 const montserrat = Montserrat({ 
   weight: ['500', '700'],
@@ -30,7 +31,11 @@ export default function RootLayout({children}) {
           {children}
           <div className="footer">
             <div className="footer__content">
-              BF Rodret 2 U.P.A. <a href="https://goo.gl/maps/73XdpHWQQvRzo1yc7">Eldarvägen 4-6, Gröndal, 117 66 Stockholm.</a>
+              {sharedStrings.organisationName}.{" "}
+              <a href="https://goo.gl/maps/73XdpHWQQvRzo1yc7">
+                {sharedStrings.streetAddress},{" "}
+                {sharedStrings.zipCode} {sharedStrings.city}
+              </a>
             </div>
           </div>
         </main>
