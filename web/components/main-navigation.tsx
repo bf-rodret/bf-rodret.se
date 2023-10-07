@@ -17,6 +17,11 @@ export default function MainNavigation({data, path}: Props) {
           </Link>
         </li>
       ))}
+      <li>
+        <Link href="https://www.sbc.se/kontakt/maklarservice">
+          <BsChevronRight/>Mäklarinfo
+        </Link>
+      </li>
     </ul>
   )
 }
