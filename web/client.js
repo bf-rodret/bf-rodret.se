@@ -4,7 +4,7 @@ import createImageUrlBuilder from '@sanity/image-url'
 export const config = {
   projectId: 'bjnjq7k1',
   dataset: 'production',
-  useCdn: true, // set to `true` to fetch from edge cache
+  useCdn: false, // set to `true` to fetch from edge cache
   apiVersion: '2023-09-01', // use current date (YYYY-MM-DD) to target the latest API version
 };
 
