@@ -4,7 +4,10 @@ import {
   CogIcon,
   BookIcon,
   CalendarIcon,
-  ImageIcon
+  ImageIcon,
+  PackageIcon,
+  UserIcon,
+  BulbOutlineIcon
 } from '@sanity/icons';
 
 const hiddenDocTypes = listItem =>
@@ -14,7 +17,10 @@ const hiddenDocTypes = listItem =>
     "historyImageType",
     "historyArticle",
     "historyImage",
-    "timelineEvent"
+    "timelineEvent",
+    "member",
+    "resource",
+    "booking"
   ].includes(listItem.getId());
 
 export default (S, context) => S.list().title('Content').items([
@@ -39,13 +45,27 @@ export default (S, context) => S.list().title('Content').items([
     S.documentTypeList('historyImage')
   ),
 
-  S.listItem().title("Händelser (tidslinje)").icon(CalendarIcon).child(
+  S.listItem().title("Händelser (tidslinje)").icon(BulbOutlineIcon).child(
     S.documentTypeList('timelineEvent')
   ),
 
   ...S.documentTypeListItems().filter(hiddenDocTypes),
 
   S.divider(),
+
+  S.listItem().title("Bokningar").icon(CalendarIcon).child(
+    S.documentTypeList('booking')
+  ),
+
+  S.divider(),
+
+  S.listItem().title("Bokningsbara resurser").icon(PackageIcon).child(
+    S.documentTypeList('resource')
+  ),
+
+  S.listItem().title("Medlemmar").icon(UserIcon).child(
+    S.documentTypeList('member')
+  ),
 
   S.listItem().title("Bildtyper").icon(CogIcon).child(
     S.documentTypeList('historyImageType')

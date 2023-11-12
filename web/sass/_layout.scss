@@ -22,7 +22,8 @@ body {
 .page,
 .article-page,
 .images-page,
-.timeline-page {
+.timeline-page,
+.booking-page {
   flex: 1 1 auto;
 
   padding: 30px;
@@ -38,7 +39,8 @@ body {
   background: #5CA685;
 }
 
-.article-page {
+.article-page,
+.booking-page {
   background: #fff;
   border-top: 5px solid #5CA685;
 }

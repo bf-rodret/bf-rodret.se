@@ -1,0 +1,46 @@
+@use "vars";
+
+.member-card {
+	border: 1px dashed vars.$color-ui__divider;
+	padding: 20px;
+  border-radius: 3px;
+ }
+
+.booking-page {
+  .page-header,
+  .page-title {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #5CA685;
+
+    a {
+      color: #5CA685;
+      opacity: 1;
+    }
+  
+    @media screen and (min-width: 800px) {
+      text-align: center;
+    }
+  }
+
+	.bookings {
+	  max-width: 900px;
+	  margin-left: auto;
+	  margin-right: auto;
+	}
+
+	.bookings-calendar {
+		margin-top: 20px;
+	}
+}
+
+.rbc-calendar {
+	height: 800px !important;
+}
+.rbc-allday-cell {
+  display: none;
+}
+.rbc-header {
+	border-bottom: 0 !important;
+}

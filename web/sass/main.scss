@@ -3,9 +3,12 @@
 @use "layout";
 
 // Pages & Components
+@use "booking-page";
 @use "article-page";
 @use "history-image";
 @use "history-images-page";
 @use "rich-text";
 @use "timeline";
 @use "head";
+
+@import 'react-big-calendar/lib/sass/styles';
