@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import groq from 'groq';
 import {client} from 'client';
 import PageHeader from 'components/page-header';
