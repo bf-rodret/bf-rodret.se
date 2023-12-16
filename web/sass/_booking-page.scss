@@ -1,10 +1,9 @@
 @use "vars";
 
 .member-card {
-	border: 1px dashed vars.$color-ui__divider;
-	padding: 20px;
-  border-radius: 3px;
- }
+	border-top: 3px solid vars.$color-ui__divider;
+	padding: 20px 0 0 0;
+}
 
 .booking-page {
   .page-header,
@@ -35,12 +34,3 @@
 	}
 }
 
-.rbc-calendar {
-	height: 800px !important;
-}
-.rbc-allday-cell {
-  display: none;
-}
-.rbc-header {
-	border-bottom: 0 !important;
-}
