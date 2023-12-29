@@ -6,6 +6,7 @@ import getTocDataForPageType from 'helpers/get-toc-data-for-page-type.js';
 import {Breadcrumb} from 'types/Breadcrumb';
 import moment from 'moment';
 import Image from "next/image";
+import {GarageParkingSlotRental} from "types/Rental";
 
 const query = groq`{
   "rentals": *[_type == "garageParkingSlotRental"]{
@@ -20,18 +21,14 @@ const query = groq`{
 
 async function getData() {
 	const data = await client.fetch(query)
-	//const tocData = await getTocDataForPageType('informationArticle', article._id);
-
 	return data;
 }
 
 export default async function ResourcePage({}) {
 	const data = await getData();
 
-  //console.log(data.rentals);
-
-  const rentedIds = [];
-  let activeRentals = data.rentals.filter((rental) => {
+  const rentedIds: Array<string> = [];
+  let activeRentals = data.rentals.filter((rental: GarageParkingSlotRental) => {
     if (rental.garageParkingSlot) {
       rentedIds.push(rental.garageParkingSlot.id);
       return true;
