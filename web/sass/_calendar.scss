@@ -1,0 +1,37 @@
+@use "vars";
+
+@import 'react-big-calendar/lib/sass/styles';
+
+.rbc-custom__past-time {
+	background-color: #efefef;
+}
+
+.rbc-calendar {
+	height: 800px !important;
+}
+.rbc-allday-cell {
+  display: none;
+}
+.rbc-header {
+	border-bottom: 0 !important;
+}
+.rbc-label,
+.rbc-button-link {
+  font-family: vars.$font--meta !important;
+  font-size: 14px !important;
+}
+.rbc-event-label {
+  display: none !important;
+}
+.rbc-event {
+  background-color: vars.$color-background !important;
+  border-color: darken(vars.$color-background, 10) !important;
+}
+.rbc-event-content {
+  font-family: vars.$font--meta;
+  font-size: 14px;
+  font-weight: normal;
+}
+.rbc-active {
+	box-shadow: none !important;
+}

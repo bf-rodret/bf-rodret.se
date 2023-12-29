@@ -1,0 +1,36 @@
+@use "vars";
+
+.member-card {
+	border-top: 3px solid vars.$color-ui__divider;
+	padding: 20px 0 0 0;
+}
+
+.booking-page {
+  .page-header,
+  .page-title {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #5CA685;
+
+    a {
+      color: #5CA685;
+      opacity: 1;
+    }
+  
+    @media screen and (min-width: 800px) {
+      text-align: center;
+    }
+  }
+
+	.bookings {
+	  max-width: 900px;
+	  margin-left: auto;
+	  margin-right: auto;
+	}
+
+	.bookings-calendar {
+		margin-top: 20px;
+	}
+}
+
