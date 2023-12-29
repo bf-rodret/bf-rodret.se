@@ -7,6 +7,20 @@ import {Breadcrumb} from 'types/Breadcrumb';
 import moment from 'moment';
 import Image from "next/image";
 import {GarageParkingSlotRental} from "types/Rental";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  robots: {
+    index: false,
+    follow: false,
+    nocache: true,
+    googleBot: {
+      index: false,
+      follow: false,
+      noimageindex: true,
+    },
+  },
+};
 
 const query = groq`{
   "rentals": *[_type == "garageParkingSlotRental"]{
