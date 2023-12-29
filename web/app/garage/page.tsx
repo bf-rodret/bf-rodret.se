@@ -5,6 +5,7 @@ import MainNavigation from 'components/main-navigation';
 import getTocDataForPageType from 'helpers/get-toc-data-for-page-type.js';
 import {Breadcrumb} from 'types/Breadcrumb';
 import moment from 'moment';
+import Image from "next/image";
 
 const query = groq`{
   "rentals": *[_type == "garageParkingSlotRental"]{
@@ -95,6 +96,15 @@ export default async function ResourcePage({}) {
           </p>
 
           <h2>Platser</h2>
+
+          <div className="inline-image">
+            <Image
+              src="/images/garage.png"
+              width={1092}
+              height={335}
+              alt=""
+            />
+          </div>
 
           <table>
             <thead>

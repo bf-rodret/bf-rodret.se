@@ -7,7 +7,9 @@ import {
   ImageIcon,
   PackageIcon,
   UserIcon,
-  BulbOutlineIcon
+  BulbOutlineIcon,
+  InlineIcon,
+  InlineElementIcon
 } from '@sanity/icons';
 
 const hiddenDocTypes = listItem =>
@@ -20,7 +22,9 @@ const hiddenDocTypes = listItem =>
     "timelineEvent",
     "member",
     "resource",
-    "booking"
+    "booking",
+    "garageParkingSlot",
+    "garageParkingSlotRental"
   ].includes(listItem.getId());
 
 export default (S, context) => S.list().title('Content').items([
@@ -57,7 +61,15 @@ export default (S, context) => S.list().title('Content').items([
     S.documentTypeList('booking')
   ),
 
+  S.listItem().title("Garage kö + tilldelningar").icon(InlineElementIcon).child(
+    S.documentTypeList('garageParkingSlotRental')
+  ),
+
   S.divider(),
+
+  S.listItem().title("Garageplatser").icon(InlineIcon).child(
+    S.documentTypeList('garageParkingSlot')
+  ),
 
   S.listItem().title("Bokningsbara resurser").icon(PackageIcon).child(
     S.documentTypeList('resource')

@@ -87,6 +87,18 @@
     }
   }
 
+  .inline-image {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    max-width: 600px;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
   .main-navigation {
     border-top: 5px solid #5CA685;
     margin-top: 30px;
