@@ -71,6 +71,11 @@ export default {
       type: "date",
     },
     {
+      title: "Byte",
+      name: "switchDate",
+      type: "date",
+    },
+    {
       title: "Tillträde",
       name: "startDate",
       type: "date",
