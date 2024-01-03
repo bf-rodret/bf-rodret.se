@@ -1,3 +1,5 @@
+import { ParkingSlot } from "../icons";
+
 export default {
   title: "Garageplats",
   name: "garageParkingSlot",
@@ -12,6 +14,7 @@ export default {
       }
     }
   },
+  icon: ParkingSlot,
   fields: [
     {
       title: "Beteckning",
