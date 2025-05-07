@@ -1,7 +1,10 @@
+import { Member } from "../icons";
+
 export default {
   title: "Medlem",
   name: "member",
   type: "document",
+  icon: Member,
   preview: {
     select: {
       shortName: 'shortName',

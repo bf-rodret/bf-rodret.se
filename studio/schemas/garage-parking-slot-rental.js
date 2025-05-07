@@ -1,7 +1,7 @@
 import {
-  CheckmarkCircleIcon,
-  CalendarIcon
-} from '@sanity/icons';
+  BookedParkingSlot,
+  Queued
+} from "../icons";
 
 export default {
   title: "Garage kö + tilldelning",
@@ -24,7 +24,7 @@ export default {
     },
     prepare({name, lastName, garageParkingSlot, queueDate}) {
       let description = "";
-      let icon = CheckmarkCircleIcon;
+      let icon = BookedParkingSlot;
 
       if (garageParkingSlot) {
         description = `Tilldelad plats ${garageParkingSlot}`
@@ -35,7 +35,7 @@ export default {
           month: "long"
         });
         description = `Kö sedan ${formattedDate}`; 
-        icon = CalendarIcon;
+        icon = Queued;
       }
 
       return {

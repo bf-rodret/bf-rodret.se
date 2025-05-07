@@ -1,16 +1,4 @@
-import {
-  HomeIcon,
-  DocumentTextIcon,
-  CogIcon,
-  BookIcon,
-  CalendarIcon,
-  ImageIcon,
-  PackageIcon,
-  UserIcon,
-  BulbOutlineIcon,
-  InlineIcon,
-  InlineElementIcon
-} from '@sanity/icons';
+import * as Icon from "./icons";
 
 const hiddenDocTypes = listItem =>
   ![
@@ -21,35 +9,33 @@ const hiddenDocTypes = listItem =>
     "historyImage",
     "timelineEvent",
     "member",
-    "resource",
-    "booking",
     "garageParkingSlot",
     "garageParkingSlotRental"
   ].includes(listItem.getId());
 
 export default (S, context) => S.list().title('Content').items([
 
-  S.listItem().title("Startsida").icon(HomeIcon).child(
+  S.listItem().title("Startsida").icon(Icon.Home).child(
     S.document().schemaType("start").documentId("start")
   ),
 
   S.divider(),
 
-  S.listItem().title("Infoartiklar (för medlemmar)").icon(DocumentTextIcon).child(
+  S.listItem().title("Infoartiklar (för medlemmar)").icon(Icon.InfoArticle).child(
     S.documentTypeList('informationArticle')
   ),
 
   S.divider(),
 
-  S.listItem().title("Historikartiklar").icon(BookIcon).child(
+  S.listItem().title("Historikartiklar").icon(Icon.HistoryArticle).child(
     S.documentTypeList('historyArticle')
   ),
 
-  S.listItem().title("Historikbilder").icon(ImageIcon).child(
+  S.listItem().title("Historikbilder").icon(Icon.HistoryImage).child(
     S.documentTypeList('historyImage')
   ),
 
-  S.listItem().title("Händelser (tidslinje)").icon(BulbOutlineIcon).child(
+  S.listItem().title("Händelser (tidslinje)").icon(Icon.Event).child(
     S.documentTypeList('timelineEvent')
   ),
 
@@ -57,29 +43,21 @@ export default (S, context) => S.list().title('Content').items([
 
   S.divider(),
 
-  S.listItem().title("Bokningar").icon(CalendarIcon).child(
-    S.documentTypeList('booking')
-  ),
-
-  S.listItem().title("Garage kö + tilldelningar").icon(InlineElementIcon).child(
+  S.listItem().title("Garagekö + tilldelningar").icon(Icon.Queue).child(
     S.documentTypeList('garageParkingSlotRental')
   ),
 
   S.divider(),
 
-  S.listItem().title("Garageplatser").icon(InlineIcon).child(
+  S.listItem().title("Garageplatser").icon(Icon.ParkingSlot).child(
     S.documentTypeList('garageParkingSlot')
   ),
 
-  S.listItem().title("Bokningsbara resurser").icon(PackageIcon).child(
-    S.documentTypeList('resource')
-  ),
-
-  S.listItem().title("Medlemmar").icon(UserIcon).child(
+  S.listItem().title("Medlemmar").icon(Icon.Members).child(
     S.documentTypeList('member')
   ),
 
-  S.listItem().title("Bildtyper").icon(CogIcon).child(
+  S.listItem().title("Bildtyper").icon(Icon.ImageType).child(
     S.documentTypeList('historyImageType')
   ),
 

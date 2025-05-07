@@ -1,9 +1,20 @@
 import richTextEditor from './rich-text-editor';
+import { InfoArticle } from "../icons";
 
 export default {
   title: "Informations-artikel",
   name: "informationArticle",
   type: "document",
+  icon: InfoArticle,
+  preview: {
+    select: {
+      title: 'title',
+    },
+    prepare(selection) {
+      const {title} = selection
+      return {title: `${title}`}
+    }
+  },
   fields: [
     {
       title: "Titel",
