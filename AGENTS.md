@@ -9,7 +9,12 @@ This repository contains two separate Node applications:
 
 There is no root `package.json`. Run install, build, and dev commands inside `web/` or `studio/`.
 
-Both apps pin Node via `.nvmrc` to `v18.17.0`.
+The two apps now have intentionally different Node runtimes:
+
+- `web/.nvmrc`: `v18.17.0`
+- `studio/.nvmrc`: `v20.19.6`
+
+Do not blindly unify them. The frontend still carries older dependencies such as `node-sass`, while the Studio now targets current Sanity releases.
 
 ## Workspace Map
 
@@ -32,10 +37,12 @@ Key routes:
 
 ### `studio/`
 
-- Framework: Sanity Studio v3
+- Framework: Sanity Studio v5
 - Main config: [`studio/sanity.config.ts`](/Users/martin.lissmyr@schibsted.com/Web/bf-rodret.se/studio/sanity.config.ts)
 - Custom desk structure: [`studio/deskStructure.js`](/Users/martin.lissmyr@schibsted.com/Web/bf-rodret.se/studio/deskStructure.js)
 - Schema entrypoint: [`studio/schemas/schema.js`](/Users/martin.lissmyr@schibsted.com/Web/bf-rodret.se/studio/schemas/schema.js)
+- Runtime stack in [`studio/package.json`](/Users/martin.lissmyr@schibsted.com/Web/bf-rodret.se/studio/package.json):
+  `sanity ^5.19.0`, `@sanity/vision ^5.19.0`, `@sanity/cli ^6.3.1`, `react ^19.2.4`, `react-dom ^19.2.4`, `styled-components ^6.3.12`
 
 The studio exposes two workspaces:
 
@@ -80,6 +87,15 @@ The Studio has both `production` and `development` datasets, but the frontend cl
 - dataset `production`
 
 This is defined in [`web/client.js`](/Users/martin.lissmyr@schibsted.com/Web/bf-rodret.se/web/client.js). Changes made in the Studio's development workspace will not appear in the website unless the frontend client is changed or content is published to the production dataset.
+
+### Split runtime trap
+
+The repo no longer has one shared Node baseline:
+
+- the frontend currently expects Node 18 behavior
+- the Studio upgrade moved Sanity to Node 20 and React 19
+
+When working across both apps, switch runtimes deliberately and verify the correct app under its own `.nvmrc`.
 
 ### Sensitive/member data
 
@@ -145,6 +161,8 @@ Notes:
 
 - local Studio default is `http://localhost:3333`
 - `npm run start` runs `sanity start`
+- use Node from [`studio/.nvmrc`](/Users/martin.lissmyr@schibsted.com/Web/bf-rodret.se/studio/.nvmrc) before installing or building
+- current Studio dependencies target Sanity v5 / React 19, not the old v3 stack
 
 ## Verification Expectations
 
@@ -155,6 +173,11 @@ There are no dedicated lint or test scripts in the repo today. For most changes:
 3. manually inspect any changed GROQ query, route params, and content-model assumptions
 
 If a change affects dynamic routes, verify that `generateStaticParams()` still covers all expected entries.
+
+For Studio work specifically:
+
+- treat `npm run build` as the primary verification signal
+- `npm run dev` may still fail for local environment reasons such as watcher limits (`EMFILE`) or port binding restrictions even when the Studio upgrade itself is valid
 
 ## Agent Guidance
 
