@@ -38,8 +38,15 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function ImagePage({params}) {
-  const data = await getData(params.id);
+interface PageProps {
+  params: Promise<{
+    id: string;
+  }>;
+}
+
+export default async function ImagePage({params}: PageProps) {
+  const { id } = await params;
+  const data = await getData(id);
   const breadcrumbs = [
     {
       'title': 'Om Huset',

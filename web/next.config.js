@@ -3,19 +3,9 @@ const path = require('path');
 
 const nextConfig = {
   output: 'export',
-  experimental: {
-    appDir: true,
-  },
+  outputFileTracingRoot: __dirname,
   sassOptions: {
     includePaths: [path.join(__dirname, 'sass')],
-  },
-  webpack: config => {
-    config.module.rules.push({
-      test: /\.svg$/,
-      use: ["@svgr/webpack"]
-    });
-
-    return config;
   },
   images: {
     domains: ["cdn.sanity.io"],

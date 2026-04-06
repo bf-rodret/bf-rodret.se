@@ -37,9 +37,15 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function HistoryArticlePage({params}) {
+interface PageProps {
+  params: Promise<{
+    slug: string;
+  }>;
+}
 
-  const data = await getData(params.slug);
+export default async function HistoryArticlePage({params}: PageProps) {
+  const { slug } = await params;
+  const data = await getData(slug);
   const breadcrumbs = [
     {
       'title': 'Om Huset',
