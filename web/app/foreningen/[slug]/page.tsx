@@ -38,8 +38,14 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function InformationArticlePage({params}) {
-  const { slug } = params;
+interface PageProps {
+  params: Promise<{
+    slug: string;
+  }>;
+}
+
+export default async function InformationArticlePage({params}: PageProps) {
+  const { slug } = await params;
 	const data = await getData(slug);
   const breadcrumbs: Array<Breadcrumb> = [
     {
