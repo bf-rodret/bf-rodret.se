@@ -11,8 +11,12 @@ export default async function Page() {
 
   return (
     <div className="page">
-      <PageHeader pageTitle="Medlems&shy;information"></PageHeader>
-      <MainNavigation data={data} path="/foreningen"/>
+      {false && (
+        <>
+          <PageHeader pageTitle="Medlems&shy;information"></PageHeader>
+          <MainNavigation data={data} path="/foreningen"/>
+        </>
+      )}
     </div>
   )
 }

@@ -56,9 +56,13 @@ export default async function InformationArticlePage({params}: PageProps) {
 
   return (
   	<div className="article-page">
-	    <PageHeader pageTitle={data.article.title} breadcrumbs={breadcrumbs}></PageHeader>
-	    <Article data={data.article}/>
-	    <MainNavigation data={data.tocData} path="/foreningen"/>
+      {false && (
+        <>
+    	    <PageHeader pageTitle={data.article.title} breadcrumbs={breadcrumbs}></PageHeader>
+    	    <Article data={data.article}/>
+    	    <MainNavigation data={data.tocData} path="/foreningen"/>
+        </>
+      )}
 	  </div>
   )
 

@@ -18,6 +18,11 @@ export default function MainNavigation({data, path}: Props) {
         </li>
       ))}
       <li>
+        <Link href="https://hemma.sbc.se/kundportal">
+          <BsChevronRight/>Medlemsinfo
+        </Link>
+      </li>
+      <li>
         <Link href="https://www.sbc.se/kontakt/maklarservice">
           <BsChevronRight/>Mäklarinfo
         </Link>
